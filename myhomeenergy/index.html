@@ -18,134 +18,117 @@
   <body>
     
 <!-- include the following in the scene tag to disable the 'enterVR' button that displays in the bottom right: vr-mode-ui="enabled: false" -->  
-    <!-- include the following in a-scene to enable antialiasing for mobile          renderer="antialias: true;"            otherwise it's auto on for desktop, off for mobile  -->
+    <!-- include the following in a-scene to enable antialiasing for mobile:  renderer="antialias: true;"  otherwise it's auto on for desktop, off for mobile  -->
 <a-scene vr-mode-ui="enabled: true">
-         <!-- sound="src: url(assets/shamaluev.mp3); loop:true; autoplay:true; volume:0.5;" -->   
-      <!-- Asset management system. -->
-	    <a-assets>
-
-		    <!-- The object for the flat is loaded here -->
-		    <a-asset-item id="sculpt-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.obj"></a-asset-item>
-		    <a-asset-item id="sculpt-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.mtl"></a-asset-item>
+	<!-- sound="src: url(assets/shamaluev.mp3); loop:true; autoplay:true; volume:0.5;" -->   
+        <!-- Asset management system. -->
+	<a-assets>
+		<!-- The object for the flat is loaded here -->
+		<a-asset-item id="sculpt-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.obj"></a-asset-item>
+		<a-asset-item id="sculpt-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.mtl"></a-asset-item>
+		    
+		<img id="concrete" src="https://raw.githubusercontent.com/craftecode/hello-world/master/concrete_FLOOR_LIGHTER_by_ClintBellanger_OpenGameArt.jpg" crossorigin="anonymous">
+		<img id="skybox" src="https://raw.githubusercontent.com/craftecode/hello-world/master/skybox11.png" crossorigin="anonymous">
+		    
+		<a-asset-item id="tablet-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.obj"></a-asset-item>
+		<a-asset-item id="tablet-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.mtl"></a-asset-item>
+		    
+		<a-mixin id="treetrunk" material="color:brown" geometry="primitive:cylinder;radius:0.5;height:5;segmentsHeight:1"></a-mixin>
+		<a-mixin id="treefoliage" position="0 5.15 0" rotation="" scale="1 1.1 1" material="color:green" geometry="primitive:sphere;radius:3;segmentsWidth:6;segmentsHeight:4"></a-mixin>
+		    
+		<a-mixin id="ceilinglampmixin" geometry="primitive:cylinder; radius: 0.20; height: 0.04; segmentsRadial: 10; segmentsHeight: 1;" material="color:#FFFFFF;"></a-mixin>
+		<a-mixin id="ceilinglampcentermixin" geometry="primitive:cylinder; radius: 0.18; height: 0.045; segmentsRadial: 10; segmentsHeight: 1;" material="color: #FFF; shader: flat"></a-mixin>
+		    
+		<a-asset-item id="table-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.obj"></a-asset-item>
+		<a-asset-item id="table-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.mtl"></a-asset-item>
+		    
+		<a-asset-item id="chairs-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.obj"></a-asset-item>
+		<a-asset-item id="chairs-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.mtl"></a-asset-item>
+		    
+		<!-- wall tv -->
+		<a-asset-item id="tv-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.obj"></a-asset-item>
+		<a-asset-item id="tv-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.mtl"></a-asset-item>
+		    
+		<!-- wall tv bench -->
+		<a-asset-item id="tvbench-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.obj"></a-asset-item>
+		<a-asset-item id="tvbench-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.mtl"></a-asset-item>
+		    
+		<img id="tvbenchwood" src="https://raw.githubusercontent.com/craftecode/hello-world/master/wood03.jpg" crossorigin="anonymous">
+		    
+		<a-mixin id="tvpotplantpotmixin" material="color:#f4f3f2; side: double" geometry="primitive: cylinder; radius: 0.27; height: 0.44; segmentsRadial: 10; segmentsHeight: 1; openEnded: true"></a-mixin>
+		<a-mixin id="leaf" position="0 1 0" material="color:#1c7a22; side: double" scale="0.2 1 0.2" geometry="primitive: sphere; radius: 1; primitive: sphere; segmentsWidth: 10; segmentsHeight: 3; thetaStart: 0; thetaLength: 180; phiStart: 335; phiLength: 50;"></a-mixin>
+		    
+		<a-asset-item id="lounge-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_textured.mtl"></a-asset-item>
+		<a-asset-item id="lounge-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_02.obj"></a-asset-item>
+		<!-- non-textured lounge is lounge_02.obj, mtl, textured is lounge_textured.obj, mtl -->
         
-        <img id="concrete" src="https://raw.githubusercontent.com/craftecode/hello-world/master/concrete_FLOOR_LIGHTER_by_ClintBellanger_OpenGameArt.jpg" crossorigin="anonymous">
-        <img id="skybox" src="https://raw.githubusercontent.com/craftecode/hello-world/master/skybox11.png" crossorigin="anonymous">
+        	<a-asset-item id="pillow01-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow01.obj"></a-asset-item>
+        	<a-asset-item id="pillow02-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow02.obj"></a-asset-item>
+        	<a-asset-item id="pillow03-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow03.obj"></a-asset-item>
         
-        <a-asset-item id="tablet-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.obj"></a-asset-item>
-        <a-asset-item id="tablet-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.mtl"></a-asset-item>
+        	<a-asset-item id="pendantlampshade-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pendantlampshade.obj"></a-asset-item>
         
+        	<a-mixin id="lamptop" geometry="primitive: cylinder; radius:0.125; height:0.17; segmentsRadial: 10; segmentsHeight: 1" position="0 1.50 0" material="color:#FFFFFF;"></a-mixin>
+        	<a-mixin id="lampstem" geometry="primitive: cylinder; radius:0.01; height:1.70; segmentsRadial: 6; segmentsHeight: 1" position="0.16 .85 0" material="color:#DDDDDD"></a-mixin>
+        	<a-mixin id="lampbox" geometry="primitive: box;" scale="0.090 0.060 0.04" position="0.160 1.535 0" material="color:#FFFFFF"></a-mixin>
+        	<a-mixin id="lampfoot" geometry="primitive: cylinder; radius:0.16; height: 0.01; segmentsRadial: 10; segmentsHeight: 1" position="0.16 .01 0" material="color:#FFFFFF"></a-mixin>
         
+        	<a-asset-item id="vbatwing-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-wing.mtl"></a-asset-item>
+        	<a-asset-item id="vbatwing-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-wing.obj"></a-asset-item>
+        	<a-asset-item id="vbatbody-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-body.mtl"></a-asset-item>
+        	<a-asset-item id="vbatbody-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-body.obj"></a-asset-item>
         
-                <a-mixin id="treetrunk" material="color:brown" geometry="primitive:cylinder;radius:0.5;height:5;segmentsHeight:1"></a-mixin>
-        <a-mixin id="treefoliage" position="0 5.15 0" rotation="" scale="1 1.1 1" material="color:green" geometry="primitive:sphere;radius:3;segmentsWidth:6;segmentsHeight:4"></a-mixin>
+        	<a-mixin id="vampirebat"
+			scale="0.0 0.0 0.0"
+                 	animation__2="property:scale; startEvents:spawnbats; dur:200; from:0 0 0; to:0.06 0.06 0.06; easing:linear"
+                 	animation__3="property:scale; startEvents:spawnbats; dur:100; from:0.06 0.06 0.06; to:0 0 0; delay:1000; easing:linear"></a-mixin>
         
-        <a-mixin id="ceilinglampmixin" geometry="primitive:cylinder; radius: 0.20; height: 0.04; segmentsRadial: 10; segmentsHeight: 1;" material="color:#FFFFFF;"></a-mixin>
-        <a-mixin id="ceilinglampcentermixin" geometry="primitive:cylinder; radius: 0.18; height: 0.045; segmentsRadial: 10; segmentsHeight: 1;" material="color: #FFF; shader: flat"></a-mixin>
+        	<a-mixin id="wingleft" obj-model="obj: #vbatwing-obj; mtl: #vbatwing-mtl;"
+              		animation="property:rotation; dur:200; from:0 0 -7; to:0 0 7; loop:true; easing:linear; dir:alternate"></a-mixin>
         
-        <a-asset-item id="table-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.obj"></a-asset-item>
-		    <a-asset-item id="table-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.mtl"></a-asset-item>
-        
-        <a-asset-item id="chairs-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.obj"></a-asset-item>
-		    <a-asset-item id="chairs-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.mtl"></a-asset-item>
-        
-        <!-- wall tv -->
-        <a-asset-item id="tv-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.obj"></a-asset-item>
-		    <a-asset-item id="tv-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.mtl"></a-asset-item>
-
-        <!-- wall tv bench -->
-        <a-asset-item id="tvbench-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.obj"></a-asset-item>
-		    <a-asset-item id="tvbench-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.mtl"></a-asset-item>
-        
-        <img id="tvbenchwood" src="https://raw.githubusercontent.com/craftecode/hello-world/master/wood03.jpg" crossorigin="anonymous">
-        
-        <a-mixin id="tvpotplantpotmixin" material="color:#f4f3f2; side: double" geometry="primitive: cylinder; radius: 0.27; height: 0.44; segmentsRadial: 10; segmentsHeight: 1; openEnded: true"></a-mixin>
-        
-        <a-mixin id="leaf" position="0 1 0"
-              material="color:#1c7a22; side: double"
-              scale="0.2 1 0.2"
-              geometry="primitive: sphere; radius: 1; 
-                        primitive: sphere; 
-                        segmentsWidth: 10; 
-                        segmentsHeight: 3;
-                        thetaStart: 0; 
-                        thetaLength: 180;
-                        phiStart: 335; 
-                        phiLength: 50;
-                        "></a-mixin>
-        
-        
-        
-        <a-asset-item id="lounge-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_textured.mtl"></a-asset-item>
-        <a-asset-item id="lounge-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_02.obj"></a-asset-item>
-        <!-- non-textured lounge is lounge_02.obj, mtl, textured is lounge_textured.obj, mtl -->
-        
-        <a-asset-item id="pillow01-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow01.obj"></a-asset-item>
-        <a-asset-item id="pillow02-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow02.obj"></a-asset-item>
-        <a-asset-item id="pillow03-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow03.obj"></a-asset-item>
-        
-        <a-asset-item id="pendantlampshade-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pendantlampshade.obj"></a-asset-item>
-        
-        <a-mixin id="lamptop" geometry="primitive: cylinder; radius:0.125; height:0.17; segmentsRadial: 10; segmentsHeight: 1" position="0 1.50 0" material="color:#FFFFFF;"></a-mixin>
-        <a-mixin id="lampstem" geometry="primitive: cylinder; radius:0.01; height:1.70; segmentsRadial: 6; segmentsHeight: 1" position="0.16 .85 0" material="color:#DDDDDD"></a-mixin>
-        <a-mixin id="lampbox" geometry="primitive: box;" scale="0.090 0.060 0.04" position="0.160 1.535 0" material="color:#FFFFFF"></a-mixin>
-        <a-mixin id="lampfoot" geometry="primitive: cylinder; radius:0.16; height: 0.01; segmentsRadial: 10; segmentsHeight: 1" position="0.16 .01 0" material="color:#FFFFFF"></a-mixin>
-        
-        <a-asset-item id="vbatwing-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-wing.mtl"></a-asset-item>
-        <a-asset-item id="vbatwing-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-wing.obj"></a-asset-item>
-        <a-asset-item id="vbatbody-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-body.mtl"></a-asset-item>
-        <a-asset-item id="vbatbody-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/vampirebat-body.obj"></a-asset-item>
-        
-        <a-mixin id="vampirebat" 
-                 scale="0.0 0.0 0.0"
-                 animation__2="property:scale; startEvents:spawnbats; dur:200; from:0 0 0; to:0.06 0.06 0.06; easing:linear"
-                 animation__3="property:scale; startEvents:spawnbats; dur:100; from:0.06 0.06 0.06; to:0 0 0; delay:1000; easing:linear"></a-mixin>
-        
-        <a-mixin id="wingleft" obj-model="obj: #vbatwing-obj; mtl: #vbatwing-mtl;"
-              animation="property:rotation; dur:200; from:0 0 -7; to:0 0 7; loop:true; easing:linear; dir:alternate"></a-mixin>
-        
-        <a-mixin id="wingright" obj-model="obj: #vbatwing-obj; mtl: #vbatwing-mtl;" rotation="0 180 0"
-              animation="property:rotation; dur:200; from:0 180 -7; to:0 180 7; loop:true; easing:linear; dir:alternate"></a-mixin>
+        	<a-mixin id="wingright" obj-model="obj: #vbatwing-obj; mtl: #vbatwing-mtl;" rotation="0 180 0"
+              		animation="property:rotation; dur:200; from:0 180 -7; to:0 180 7; loop:true; easing:linear; dir:alternate"></a-mixin>
             
         
-        <a-mixin id="heaterblade1mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="-0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
-        <a-mixin id="heatermidmix" geometry="primitive: box; width: 0.06; height: 0.4; depth: 2.6" position="0 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>      
-        <a-mixin id="heaterblade2mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
+        	<a-mixin id="heaterblade1mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="-0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
+        	<a-mixin id="heatermidmix" geometry="primitive: box; width: 0.06; height: 0.4; depth: 2.6" position="0 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>      
+        	<a-mixin id="heaterblade2mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
         
-        <a-asset-item id="demon-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/demon.obj"></a-asset-item>
-        <a-asset-item id="demon-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/demon.mtl"></a-asset-item>
+        	<a-asset-item id="demon-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/demon.obj"></a-asset-item>
+        	<a-asset-item id="demon-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/demon.mtl"></a-asset-item>
         
                 <!-- fabric texture for lounge -->
-        <img id="loungefabric" src="https://raw.githubusercontent.com/craftecode/hello-world/master/fabric_by_kvadrat.dk_seamless.jpg" crossorigin="anonymous">
+        	<img id="loungefabric" src="https://raw.githubusercontent.com/craftecode/hello-world/master/fabric_by_kvadrat.dk_seamless.jpg" crossorigin="anonymous">
         
-        <img id="posterfistbulb" src="https://raw.githubusercontent.com/craftecode/hello-world/master/poster_foe.jpg" crossorigin="anonymous">
+        	<img id="posterfistbulb" src="https://raw.githubusercontent.com/craftecode/hello-world/master/poster_foe.jpg" crossorigin="anonymous">
                 
-        <img id="speakertex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/Speaker_white-metal-mesh-with-round-holes-texture.jpg" crossorigin="anonymous">
+        	<img id="speakertex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/Speaker_white-metal-mesh-with-round-holes-texture.jpg" crossorigin="anonymous">
         
-        <img id="coffeetablemarble" src="https://raw.githubusercontent.com/craftecode/hello-world/master/marble.jpeg" crossorigin="anonymous">
-        <a-mixin id="coffeetableleg" geometry="primitive: cylinder; radius:0.01; height:0.35; segmentsRadial: 4; segmentsHeight: 1" material="color:#f0e088; metalness: 0.3"></a-mixin>
-        <a-mixin id="coffeetablecrossbar" geometry="primitive: cylinder; radius:0.01; height:0.94; segmentsRadial: 4; segmentsHeight: 1" position="0 -0.35 0" material="color:#f0e088; metalness: 0.3"></a-mixin>
+        	<img id="coffeetablemarble" src="https://raw.githubusercontent.com/craftecode/hello-world/master/marble.jpeg" crossorigin="anonymous">
+        	<a-mixin id="coffeetableleg" geometry="primitive: cylinder; radius:0.01; height:0.35; segmentsRadial: 4; segmentsHeight: 1" material="color:#f0e088; metalness: 0.3"></a-mixin>
+        	<a-mixin id="coffeetablecrossbar" geometry="primitive: cylinder; radius:0.01; height:0.94; segmentsRadial: 4; segmentsHeight: 1" position="0 -0.35 0" material="color:#f0e088; metalness: 0.3"></a-mixin>
         
-        <img id="sofatexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/sofa.jpg" crossorigin="anonymous">
+        	<img id="sofatexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/sofa.jpg" crossorigin="anonymous">
         
         
-        <img id="kitchentiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/kitchen_tiles.jpg" crossorigin="anonymous">
+        	<img id="kitchentiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/kitchen_tiles.jpg" crossorigin="anonymous">
         
-        <a-asset-item id="dishwasher-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.obj"></a-asset-item>
-		    <a-asset-item id="dishwasher-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.mtl"></a-asset-item>
+        	<a-asset-item id="dishwasher-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.obj"></a-asset-item>
+		<a-asset-item id="dishwasher-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.mtl"></a-asset-item>
         
-        <a-asset-item id="dishwasherdoor-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.obj"></a-asset-item>
-		    <a-asset-item id="dishwasherdoor-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.mtl"></a-asset-item>
+        	<a-asset-item id="dishwasherdoor-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.obj"></a-asset-item>
+		<a-asset-item id="dishwasherdoor-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.mtl"></a-asset-item>
         
-        <img id="stovetop-tex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/stovetop.png" crossorigin="anonymous">
+        	<img id="stovetop-tex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/stovetop.png" crossorigin="anonymous">
         
-        <a-asset-item id="cup-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.obj"></a-asset-item>
-		    <a-asset-item id="cup-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.mtl"></a-asset-item>
+        	<a-asset-item id="cup-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.obj"></a-asset-item>
+		<a-asset-item id="cup-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.mtl"></a-asset-item>
         
-        <img id="kitchenrug" src="https://raw.githubusercontent.com/craftecode/hello-world/master/rug.jpg" crossorigin="anonymous">
-        <img id="moonstarstexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/moon_stars_blue.png" crossorigin="anonymous">
+        	<img id="kitchenrug" src="https://raw.githubusercontent.com/craftecode/hello-world/master/rug.jpg" crossorigin="anonymous">
+        	<img id="moonstarstexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/moon_stars_blue.png" crossorigin="anonymous">
         
-        <a-asset-item id="medal-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.obj"></a-asset-item>
-		    <a-asset-item id="medal-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.mtl"></a-asset-item>
+        	<a-asset-item id="medal-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.obj"></a-asset-item>
+		<a-asset-item id="medal-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.mtl"></a-asset-item>
         
         <!-- Cactus -->
         <a-asset-item id="cactusmtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cactus01.mtl"></a-asset-item>
@@ -206,17 +189,17 @@
   
       <!-- camera/player -->
       <!-- Player -->
+	<!-- These animations are for the movement between the three locations in the home -->
       <a-entity id="camparent" rotation="0 0 0" position="-2.328 0 -0.768"
                 animation="easing:linear; startEvents:move01; property:position; from: -2.328 0 -0.768; to: 0.28 0.05 1.2; dur:2500"
                 animation__2="easing:linear; startEvents:move02; property:position; from:0.28 0.05 1.2; to:-0.65 0.05 -1.7; dur:2500"
                 animation__3="easing:linear; startEvents:move03; property:position; from:-0.65 0.05 -1.7; to:-3.46 0.05 -0.16; dur:2500"
-
                 >
                 
 	    <a-entity id="camera"
                 camera
                 position="0 1.6 0"
-      				  rotation="0 0 0"
+		rotation="0 0 0"
                 look-controls="pointerLockEnabled: true"
                 wasd-controls>
         
@@ -951,7 +934,7 @@
   
     </a-scene>
 
-    
+    <!-- this can be replaced with the proxy component tested in prox2.html -->
 <script>
   var ic0201Button = document.getElementById('ic0201_button');
   var dishdoor = document.getElementById('dishwasherdoor');
@@ -963,7 +946,8 @@
       moonstars01.emit('move');
       });
 </script>    
-
+	
+	  <!-- this can be replaced with the proxy component tested in prox2.html -->
     <script>
       var ic0203Button = document.getElementById('ic0203_button');
       var sinkwater = document.getElementById('sinkwaterlevel');
@@ -972,6 +956,7 @@
           });
     </script>
     
+	  <!-- this can be replaced with the proxy component tested in prox2.html -->
     <script>
       var ic0102Button = document.getElementById('ic0102_button');
       var vbat1 = document.getElementById('vampirebat1');
@@ -1059,22 +1044,24 @@
         el.setAttribute('position', { x: pos, y: 0, z: 0 });
           });
 </script>
-    
+	  
+	  
+    <!-- this can be replaced with the proxy component tested in prox2.html -->
     <script>
-  var checkpoint1 = document.getElementById('chk01');
-  var checkpoint2 = document.getElementById('chk02');
-  var checkpoint3 = document.getElementById('chk03');
-  var camparent = document.getElementById('camparent');
-      checkpoint1.addEventListener('click', function () {
-      camparent.emit('move01');
-      });
-      checkpoint2.addEventListener('click', function () {
-      camparent.emit('move02');
-      });
-      checkpoint3.addEventListener('click', function () {
-      camparent.emit('move03');
-      });
-</script>  
+	    var checkpoint1 = document.getElementById('chk01');
+	    var checkpoint2 = document.getElementById('chk02');
+	    var checkpoint3 = document.getElementById('chk03');
+	    var camparent = document.getElementById('camparent');
+	    checkpoint1.addEventListener('click', function () {
+		    camparent.emit('move01');
+	    });
+	    checkpoint2.addEventListener('click', function () {
+		    camparent.emit('move02');
+	    });
+	    checkpoint3.addEventListener('click', function () {
+		    camparent.emit('move03');
+	    });
+	  </script>  
     
     <div class="hoverbutton" style="position:fixed;top:20px;right:20px;">
     <button onclick="toggleFullScreen()" style="opacity:0.1; border: none;background-color: Transparent;">O</button>
