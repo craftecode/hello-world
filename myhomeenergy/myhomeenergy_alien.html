@@ -9,7 +9,7 @@
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script src="//unpkg.com/aframe-particle-system-component/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
     <script src="https://unpkg.com/aframe-teleport-controls@0.2.x/dist/aframe-teleport-controls.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="rotation-reader.js"></script>
@@ -24,8 +24,7 @@
 	    <a-assets>
 
 		    <!-- The object for the flat is loaded here -->
-		    <a-asset-item id="sculpt-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.obj"></a-asset-item>
-		    <a-asset-item id="sculpt-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.mtl"></a-asset-item>
+		    
         
         <img id="concrete" src="https://raw.githubusercontent.com/craftecode/hello-world/master/concrete_FLOOR_LIGHTER_by_ClintBellanger_OpenGameArt.jpg" crossorigin="anonymous">
         
@@ -36,35 +35,6 @@
         <a-mixin id="ceilinglampmixin" geometry="primitive:cylinder; radius: 0.20; height: 0.04; segmentsRadial: 10; segmentsHeight: 1;" material="color:#FFFFFF;"></a-mixin>
         <a-mixin id="ceilinglampcentermixin" geometry="primitive:cylinder; radius: 0.18; height: 0.045; segmentsRadial: 10; segmentsHeight: 1;" material="color: #FFF; shader: flat"></a-mixin>
         
-        <a-asset-item id="table-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.obj"></a-asset-item>
-		    <a-asset-item id="table-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.mtl"></a-asset-item>
-        
-        <a-asset-item id="chairs-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.obj"></a-asset-item>
-		    <a-asset-item id="chairs-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.mtl"></a-asset-item>
-        
-        <!-- wall tv -->
-        <a-asset-item id="tv-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.obj"></a-asset-item>
-		    <a-asset-item id="tv-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.mtl"></a-asset-item>
-
-        <!-- wall tv bench -->
-        <a-asset-item id="tvbench-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.obj"></a-asset-item>
-		    <a-asset-item id="tvbench-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.mtl"></a-asset-item>
-        
-        <img id="tvbenchwood" src="https://raw.githubusercontent.com/craftecode/hello-world/master/wood03.jpg" crossorigin="anonymous">
-        
-        <a-mixin id="tvpotplantpotmixin" material="color:#f4f3f2; side: double" geometry="primitive: cylinder; radius: 0.27; height: 0.44; segmentsRadial: 10; segmentsHeight: 1; openEnded: true"></a-mixin>
-        
-        <a-mixin id="leaf" position="0 1 0" material="color:#1c7a22; side: double" scale="0.2 1 0.2" geometry="primitive: sphere; radius: 1; primitive: sphere; segmentsWidth: 10; segmentsHeight: 3; thetaStart: 0; thetaLength: 180; phiStart: 335; phiLength: 50; "></a-mixin>
-                
-        <a-asset-item id="lounge-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_textured.mtl"></a-asset-item>
-        <a-asset-item id="lounge-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_02.obj"></a-asset-item>
-        <!-- non-textured lounge is lounge_02.obj, mtl, textured is lounge_textured.obj, mtl -->
-        
-        <a-asset-item id="pillow01-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow01.obj"></a-asset-item>
-        <a-asset-item id="pillow02-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow02.obj"></a-asset-item>
-        <a-asset-item id="pillow03-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow03.obj"></a-asset-item>
-        
-        <a-asset-item id="pendantlampshade-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pendantlampshade.obj"></a-asset-item>
         
         <a-mixin id="lamptop" geometry="primitive: cylinder; radius:0.125; height:0.17; segmentsRadial: 10; segmentsHeight: 1" position="0 1.50 0" material="color:#FFFFFF;"></a-mixin>
         <a-mixin id="lampstem" geometry="primitive: cylinder; radius:0.01; height:1.70; segmentsRadial: 6; segmentsHeight: 1" position="0.16 .85 0" material="color:#DDDDDD"></a-mixin>
@@ -88,70 +58,38 @@
               animation="property:rotation; dur:200; from:0 180 -7; to:0 180 7; loop:true; easing:linear; dir:alternate"></a-mixin>
             
         
-        <a-mixin id="heaterblade1mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="-0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
-        <a-mixin id="heatermidmix" geometry="primitive: box; width: 0.06; height: 0.4; depth: 2.6" position="0 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>      
-        <a-mixin id="heaterblade2mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
         
-        
-                <!-- fabric texture for lounge -->
-        <img id="loungefabric" src="https://raw.githubusercontent.com/craftecode/hello-world/master/fabric_by_kvadrat.dk_seamless.jpg" crossorigin="anonymous">
         
         <img id="posterfistbulb" src="https://raw.githubusercontent.com/craftecode/hello-world/master/poster_foe.jpg" crossorigin="anonymous">
                 
         <img id="speakertex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/Speaker_white-metal-mesh-with-round-holes-texture.jpg" crossorigin="anonymous">
         
-        <img id="coffeetablemarble" src="https://raw.githubusercontent.com/craftecode/hello-world/master/marble.jpeg" crossorigin="anonymous">
-        <a-mixin id="coffeetableleg" geometry="primitive: cylinder; radius:0.01; height:0.35; segmentsRadial: 4; segmentsHeight: 1" material="color:#f0e088; metalness: 0.3"></a-mixin>
-        <a-mixin id="coffeetablecrossbar" geometry="primitive: cylinder; radius:0.01; height:0.94; segmentsRadial: 4; segmentsHeight: 1" position="0 -0.35 0" material="color:#f0e088; metalness: 0.3"></a-mixin>
-        
-        <img id="sofatexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/sofa.jpg" crossorigin="anonymous">
         
         
         <img id="kitchentiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/kitchen_tiles.jpg" crossorigin="anonymous">
         
-        <a-asset-item id="dishwasher-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.obj"></a-asset-item>
-		    <a-asset-item id="dishwasher-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.mtl"></a-asset-item>
         
         <a-asset-item id="dishwasherdoor-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.obj"></a-asset-item>
 		    <a-asset-item id="dishwasherdoor-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.mtl"></a-asset-item>
         
-        <a-asset-item id="platesandforks-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/platesandforks.obj"></a-asset-item>
-		    <a-asset-item id="platesandforks-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/platesandforks.mtl"></a-asset-item>
-                
+               
         <img id="stovetop-tex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/stovetop.png" crossorigin="anonymous">
         
         <a-asset-item id="cup-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.obj"></a-asset-item>
 		    <a-asset-item id="cup-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cup.mtl"></a-asset-item>
         
-        <img id="kitchenrug" src="https://raw.githubusercontent.com/craftecode/hello-world/master/rug.jpg" crossorigin="anonymous">
         <img id="moonstarstexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/moon_stars_blue.png" crossorigin="anonymous">
         
         <a-asset-item id="medal-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.obj"></a-asset-item>
 		    <a-asset-item id="medal-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.mtl"></a-asset-item>
         
-        <!-- Cactus -->
-        <a-asset-item id="cactusmtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cactus01.mtl"></a-asset-item>
-        <a-asset-item id="cactusobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cactus01.obj"></a-asset-item>
-
-
-        <!-- Washer -->
-        <a-mixin id="choppingboard" geometry="primitive: box;width:0.3; height:0.04; depth:0.2" scale="1.2 1 1.2" rotation="0 18 0" position="-1.426 0.8 -3.66" material="src: #woodplanks01;repeat: 0.125 0.065; offset: 0.01 0.006; color:#dddddd"></a-mixin>
         
-        <a-asset-item id="washermtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/washer.mtl"></a-asset-item>
-        <a-asset-item id="washerobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/washer.obj"></a-asset-item>
-        
-        <a-asset-item id="toiletmtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/toilet.mtl"></a-asset-item>
-        <a-asset-item id="toiletobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/toilet.obj"></a-asset-item>
+
         
         <a-mixin id="showerwater2" geometry="primitive: cylinder; radius:0.02; height: 2; segmentsRadial: 3; segmentsHeight: 1" material="color:#3333FF;opacity:0.15"></a-mixin>
         
         <audio id="showersound" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2FShower_SoundBible-1134591463_trimmed.mp3?v=1564839678634" preload="auto" crossorigin="anonymous"></audio>
 
-        <a-asset-item id="shower-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/shower.obj"></a-asset-item>
-        <a-asset-item id="shower-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/shower.mtl"></a-asset-item>
-        
-        <a-asset-item id="bathroomsink-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/bathroomsink2.obj"></a-asset-item>
-        <a-asset-item id="bathroomsink-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/bathroomsink2.mtl"></a-asset-item>
         
         <a-mixin id="saunahinge" geometry="primitive: box; width: 0.13; height: 0.08; depth: 0.04" material="color:#bcbaba;metalness:0.68;"></a-mixin>
         
@@ -189,14 +127,17 @@
         <a-mixin id="ibulletpoint" visible="false" scale="0.09 0.09 0.09" geometry="primitive: triangle;vertexA: 0.05 0.07 0; vertexB: -0.05 0.07 0; vertexC: 0 -0.07 0;" material="color:green;opacity:1; shader: flat;"></a-mixin>
         <a-mixin id="tabbartext" text="width:0.2; align: left; anchor: left; color: black" position="0.009 0.002 0.002"></a-mixin>
         
-        <a-asset-item id="ufo-obj" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fufo01.obj?v=1564504304361"></a-asset-item>
-        <a-asset-item id="ufo-mtl" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fufo01.mtl?v=1564504304287"></a-asset-item>
+        <a-asset-item id="ufo-glb" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fufo_withgreen.glb"></a-asset-item>
         
         <a-asset-item id="house" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fhouse_by_google.glb"></a-asset-item>
-        <a-asset-item id="alien_asset" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Falien_rounded.glb"></a-asset-item>
+        <a-asset-item id="alien_asset" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Falien_delphmod.glb"></a-asset-item>
+        
+        <a-asset-item id="home" src="https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2FMHE_CombinedModel_retexturing_did%20this%20not%20work.glb"></a-asset-item>
         
 
       </a-assets>
+      
+      
       
       <!-- Here are some activations that don't have a home anyjmore
               event-set__particles2="_event: click; _target: #heatparticles1; visible: true"
@@ -207,27 +148,59 @@
       <a-entity id="blackbox" position="0 1 0" geometry="primitive:box; width: 1.9; height: 1.9; depth: 1.9" material="color:black; side:double"></a-entity>
       
       <a-entity id="container" position="0 2 0">
-      <a-entity id="bathroom-move-target" geometry="primitive: plane; height: 0.8; width: 0.7" material="src: #footsteps; transparent:true" rotation="-90 90 0" position="-3.46 0.05 -0.16"
+      <a-entity id="bathroom-move-target" geometry="primitive: plane; height: 0.8; width: 0.7" material="src: #footsteps; transparent:true" rotation="-90 90 0" position="-3.46 0.05 -0.16" scale="0 0 0"
                 class="clickable"
                 event-set__eboxwash1="_event: click; _target: #ebox-washingmachine; scale: 1 1 1"
                 event-set__eboxfloor="_event: click; _target: #ebox-floorheating; scale: 1 1 1"
                 event-set__eboxsauna="_event: click; _target: #ebox-sauna; scale: 1 1 1"
                 event-set__eboxshower="_event: click; _target: #ebox-shower; scale: 1 1 1"
+                event-set__alien="_event: click; _target: #alien; position: 3 0.38 1"
+                event-set__alientextparent="_event: click; _target: #alientext01_parent; visible:true"
+                event-set__alientext01="_event: click; _target: #alientext01; visible:false"
+                event-set__alientext02="_event: click; _target: #alientext02; visible: true"
               
                 ></a-entity>
       
-      <a-entity id="alien" gltf-model="#alien_asset" position="3 0 1" scale="0.5 0.5 0.5" rotation="0 -90 0"></a-entity>
+      <a-entity id="alien" gltf-model="#alien_asset" position="3 0.33 0.38" scale="0.5 0.5 0.5" rotation="0 -107 0" animation="property:position; to: 3 5 0; dur:1500; startEvents: leave">
+        <a-entity id="alientext01_parent" position="2 2.1 0">
+          <a-entity id="speechbubble_01" geometry="primitive:cylinder; radius: 0.66; height: 0.01; segmentsHeight: 1; segmentsRadial: 12" material="color:white" rotation="90 0 0" scale="2.5 1 1"></a-entity>
+          <a-entity id="speechbubbleoutline_01" geometry="primitive:cylinder; radius: 0.7; height: 0.004; segmentsHeight: 1; segmentsRadial: 12" material="color:black" rotation="90 0 0" scale="2.42 1 1" position="0.005"></a-entity>
+          <a-entity id="alientext01" text="value: We are taking energy gobbling homes to planet Boring. We will check on you soon!; color:black; zOffset:0.006; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
+          <a-entity id="alientext02" visible="false" text="value: It looks like you are doing a good job here. Thanks for caring about the planet!; color:black; zOffset:0.006; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
+          
+        </a-entity>
+        </a-entity>
+        
+        <a-entity id="windowlook" geometry="primitive: plane; width: 5; height: 1.6" rotation="0 -90 0" position="1.68 1.56 0.28" visible="false" class="clickable"
+                  event-set__makethisgo="_event: mouseleave; position: 0 -10 0"
+                  event-set__beginmessagego="_event: mouseleave; _target: #alientext01_parent; visible:false"
+                  event-set__beginebox="_event: mouseleave; _target: #eboxcontainer; position: 0 0 0"
+                  event-set__movetargetvisible="_event: mouseleave; _target: #bathroom-move-target; scale: 1 1 1"
+                  proxy-emit="target:alien; event:mouseleave; emission: leave"
+                  event-set__stopscan="_event: mouseenter; _target: #alienhousescanparent; visible:false"></a-entity>
+        
+        <!-- Share link could be brought down with this event-set__sharebutton1="_event: click; _target: #sharebutton1; position:-1.4 1.6 -0.182"   - but maybe do a button on the tablet instead --> 
+        <a-link id="sharebutton1" href="whatsapp://send?text=Hey! Check out this energy smart VR experience - https://opposite-stranger.glitch.me" data-action="share/whatsapp/share" position="-1.4 -10 -0.182" scale=".3 .3 .3" rotation="0 -90 0" class="clickable" title="Share via WhatsApp" image="#posterfistbulb"></a-link>  
+        
+  
+        
+        <a-entity gltf-model="#home" position="0 0 0" rotation="0 0 0"></a-entity>
       
       <a-entity id="outside_objects">
-        <!-- a-entity id="ground" geometry="primitive:plane; height:100; width:100;" rotation="-90 0 0" position="54 -8.5 0" material="color:green"></a-entity -->
-        <!-- a-entity id="building1" position="16 -12 -15" rotation="0 45 0" material="color:grey" geometry="width:8;height:30;depth:8"></a-entity -->
-        <!--a-entity id="building2" position="22 -10 -9" rotation="0 45 0" material="color:grey" geometry="width:8;height:20;depth:8"></a-entity -->
-        <!--a-entity id="building3" position="30 -4 -11" rotation="0 45 0" material="color:grey" geometry="width:8;height:20;depth:8"></a-entity -->
-  
-        <a-entity id="ufo" scale="1 1 1" obj-model="obj: #ufo-obj; mtl: #ufo-mtl" material="color:#DDDDDD;" position="15 2 -1"></a-entity>
-        <a-entity gltf-model="#house" position="15 -2.5 -0.8" rotation="0 -90 0"></a-entity>
-        <a-entity id="ufo-tractorbeam" geometry="primitive:cone; radius-top: 0.2; radius-bottom:1; height:5;" position="15 -0.5 -1" material="color:green; opacity:0.4"></a-entity>
+          
+        <a-entity id="ufo" scale="1 1 1" gltf-model="#ufo-glb" position="15 2 -18"
+                  animation="property:position; from: 15 2 -18; to: 15 2 23; dir:alternate; loop:true; dur:14000; easing:linear">
+        <a-entity id="ufo-tractorbeam" geometry="primitive:cone; radius-top: 0.2; radius-bottom:1; height:5;" position="0 -2.5 0" material="color:green; opacity:0.4"></a-entity>
+        </a-entity>
         
+        <a-entity id="alienhousescanparent" position="5.67 4.98 0" animation="property:rotation; from: 0 -43 0; to: 0 31 0; dur: 2000; dir:alternate; loop: true;">
+          <a-entity rotation="0 0 -51.7">
+            <a-entity id="alienhousescan" geometry="primitive:cone; radius-top: 0.2; radius-bottom:2; height:10;" position="0 -5 0" material="color:green; opacity:0.4"></a-entity>
+          </a-entity>
+        </a-entity>
+        
+        <a-entity gltf-model="#house" position="15 -2.5 -0.8" rotation="0 -90 0"></a-entity>
+                
       </a-entity>
 
           
@@ -235,13 +208,13 @@
       <!-- camera/player -->
       <!-- Player -->
       <a-entity id="camparent" rotation="0 0 0" position="-0.65 0.05 -0.3"
-                animation__3="easing:linear; startEvents:move03; property:position; to:-3.46 0.05 -0.16; dur:2500"
+                animation__3="easing:linear; startEvents:move03; property:position; to:-3.46 0.05 -0.16; dur:3500"
                 >
         
         <a-entity id="blackout" position="0 1.6 0" geometry="width: 3.5; height: 1.5; depth: 3.5" scale="0 0 0" material="opacity: 0.01; side: back; color: #000" class="clickable"
                   ></a-entity>
         
-        <a-entity id="base" position="0 1.6 0" geometry="primitive:box;width:0.1;height:0.1;depth:0.1" material="wireframe:true"></a-entity>
+        <a-entity visible="false" id="base" position="0 1.8 0" geometry="primitive:box;width:0.1;height:0.1;depth:0.1" material="wireframe:true"></a-entity>
 	      
         <a-entity id="camera" camera position="0 1.6 0" rotation="0 0 0" look-controls="pointerLockEnabled: true" wasd-controls rotation-reader="target: tabletparentrotator">
         <!--  -->
@@ -262,7 +235,7 @@
             <a-entity id="tabletblankscreen" geometry="primitive: plane; width: 0.150; height: 0.220;" position ="0 0 0.002" material="color:#e5ddd7; shader: flat;"></a-entity>
                        
             
-            <a-entity id="tablettext01" text="value:Focus on the yellow\ncircles to proceed.; align: center; width: 0.3; color: black" position="0 0.030 0.004"></a-entity>
+            <a-entity visible="false" id="tablettext01" text="value:Focus on the yellow\ncircles to proceed.; align: center; width: 0.3; color: black" position="0 0.030 0.004"></a-entity>
             <a-entity id="tablettext02" visible="false" text="value:Focus on the\nyellow triangles\nand save energy!; align: center; width: 0.3; color: black" position="0 0.030 0.004"></a-entity>
             <a-entity id="tablettext04" visible="false" text="value:This shows your\nsustainable home\nin progress.; align: center; width: 0.3; color: black" position="0 0.030 0.004" rotation=" 0 0"></a-entity>            
             
@@ -470,7 +443,6 @@
           <a-entity id="infocard_laundry_button" class="clickable ic_button" mixin="infocardbutton"
                     event-set__close="_event: click; _target: #infocard_laundry_box; scale: 0 0 0"
                     event-set__tick="_event: click; _target: #tabletmark09; visible:true"
-                    event-set__sharebutton1="_event: click; _target: #sharebutton1; position:-1.4 1.6 -0.182"
                     proxy-emit="target:ebox-washingmachine; event:click; emission: shrink"
                     >
 
@@ -490,9 +462,6 @@
 
   
   
-  <!-- Share link -->
-  
-<a-link id="sharebutton1" href="whatsapp://send?text=Hey! Check out this energy smart VR experience - https://opposite-stranger.glitch.me" data-action="share/whatsapp/share" position="-1.4 -10 -0.182" scale=".3 .3 .3" rotation="0 -90 0" class="clickable" title="Share via WhatsApp" image="#posterfistbulb"></a-link>  
   
   
   
@@ -502,7 +471,7 @@
   <!-- LIGHTS - note that only x rotation appears to affect spot light direction -->
   <a-light id="ambientLight" type="ambient" color="#fff" intensity="0.3"></a-light>
   
-  <a-entity position="0 -7 0" id="feiss_environment" environment="preset: forest; dressingAmount: 200; playArea: 1; lighting: none;">  </a-entity>
+  <a-entity position="0 -7 0" id="feiss_environment" environment="preset: forest; dressingAmount: 200; playArea: 1; lighting: none; dressingColor: #c8c8c8; groundColor: #f1e8c9; groundColor2: #eaf4ff">  </a-entity>
   <!-- Replacement lights -->
   <a-entity id="hemilight" position="0 50 0" light="angle: 60; color: #ffffff; decay: 1; distance: 0; groundColor: #888; intensity: 0.6; type: hemisphere;"></a-entity>
   
@@ -514,7 +483,8 @@
   
 
   <!-- ENERGY HIGHLIGHT BOXES -->
-  
+  <a-entity id="eboxcontainer" position="0 -4 0">
+        
   <a-entity id="ebox-heater" geometry="primitive:box; depth: 2.8; height: 0.7; width: 0.3" position="1.65387 0.49518 1.25731" class="clickable" mixin="ebox"
             event-set__open="_event: click; _target: #ic0103_box; scale: 1 1 1"></a-entity>
 
@@ -572,78 +542,31 @@
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
             animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
   
+  </a-entity> <!-- End of EBOX container-->
  
   <!-- various objects -->
   
   
   <a-entity position="-2.2 0 -1">
-    <a-entity id="home" scale="1 1 1" obj-model="obj: #sculpt-obj; mtl: #sculpt-mtl" material="color:#DDDDDD;" position="2.2 1 1"></a-entity>
-    <a-entity id="floortextured" geometry="primitive: plane" position="0.7 0.01 1" rotation="-90 0 0" scale="12 14 1" material="src:#concrete; repeat: 14 12; metalness: 0.1; roughness: 1"></a-entity>
+    
+    <a-entity id="floortextured" geometry="primitive: plane" position="-2 0.01 1" rotation="-90 0 0" scale="12 14 1" material="src:#concrete; repeat: 14 12; metalness: 0.1; roughness: 1"></a-entity>
     <a-entity id="glassdoorloungeroom" visible="false" geometry="primitive:box; width:2.01; height:2.5; depth: 0.05" position="3.98749 1.03341 -0.24576" material="color:#A8ccd7;opacity:0.2" rotation="0 90 0"></a-entity>
     <a-entity id="glasswindowloungeroom" visible="false" geometry="primitive:box; width:2.88; height:1.5; depth: 0.05" position="4.02 1.5 2.29983" material="color:#A8ccd7;opacity:0.2" rotation="0 90 0"></a-entity>
   </a-entity>
   
 <a-entity id="loungeroomstuff">
   
-  <a-entity id="ceilinglampshade" mixin="ceilinglampmixin" position="-0.2 2.40 -2.1">
-    <a-entity id="ceilinglampcenter" mixin="ceilinglampcentermixin"></a-entity>
-  </a-entity>
-  
-  <a-entity id="ceilinglampshade2" mixin="ceilinglampmixin" position="-2.456 2.40 -2.1">
-    <a-entity id="ceilinglampcenter2" mixin="ceilinglampcentermixin"></a-entity>
-  </a-entity>
-  
-  <a-entity id="ceilinglampshade3" mixin="ceilinglampmixin" position="-2.456 2.40 1.793">
-    <a-entity id="ceilinglampcenter3" mixin="ceilinglampcentermixin"></a-entity>
-  </a-entity>
-  
-  
-  
-
-  
-  <a-entity id="table" obj-model="obj: #table-obj; mtl: #table-mtl" position="0.930 0.05 -0.373" rotation="0 20 0"></a-entity>
-  <a-entity id="chairs" obj-model="obj: #chairs-obj; mtl: #chairs-mtl" position="0.930 0.017 -0.373" rotation="0 20 0"></a-entity>
-  
-  <a-entity id="lounge" obj-model="obj: #lounge-obj;" scale="1 1 1" position="-1.239 0 1.6" rotation="0 25 0" material="src:#sofatexture;">
-            <a-entity id="pillowpink" obj-model="obj: #pillow01-obj;" position="0.406 0.636 -0.017" rotation="44.394 -43.540 9.342" material="color:#f0d5d5;"></a-entity>
-            <a-entity id="pillowgrey" obj-model="obj: #pillow02-obj;" position="-0.369 0.664 -0.111" rotation="57.998 -2.446 -2.468" material="color:#d8d2d0;"></a-entity>
-            <a-entity id="pilloworange" obj-model="obj: #pillow03-obj;" position="-0.126 0.546 0.084" rotation="0 30.548 0" material="color:#f6b55c;"></a-entity>
-  </a-entity>
-  
-  <a-entity id="tvpotplant" position="-1.693 0 3.286" scale="0.7 0.7 0.7" rotation="0 140 0">
-    <a-entity id="tvpotplantpot" position="0 0.218 0" mixin="tvpotplantpotmixin"><a-entity id="potsoil" geometry="primitive:circle; radius: 0.269; segments: 10;" position="0 0.1 0" rotation="-90 18 0" material="color:#654321"></a-entity></a-entity>
-    <a-entity id="leaf1rotation" position="0 0.2 0" rotation="0 0 -29" scale="1 0.84 1"><a-entity mixin="leaf"></a-entity></a-entity>
-    <a-entity id="leaf2rotation" position="0 0.2 0" rotation="5 -100 -44" scale="1 0.4 1"><a-entity mixin="leaf"></a-entity></a-entity>
-    <a-entity id="leaf3rotation" position="0 0.2 0" rotation="0 80 -35" scale="1 0.7 1"><a-entity mixin="leaf"></a-entity></a-entity>
-  </a-entity>
   
   <!-- tv pieces -->
   <a-entity id="tvpieces" position="0 0.2 0">
-    <a-entity id="tvbench" obj-model="obj: #tvbench-obj;" visible="true" scale="1 1 1" position="-0.438  0.01 3.597" material="src:#tvbenchwood;"></a-entity>
-    <!-- OBJ is offset :( --><a-entity id="tv" obj-model="obj: #tv-obj;" scale="1 1 1" position="0 1 0" material="color:#DDDDDD; metalness: 0.4"></a-entity>
     <a-entity id="tvscreen" geometry="primitive: box;" scale="1.41 0.80 0.1" position="-0.443 1.072 3.615" material="color:#000000"></a-entity>
     <a-entity id="tvscreenimage" visible="true" geometry="primitive: box;" scale="1.41 0.80 0.1" position="-0.443 1.072 3.613" material="shader:flat;color:#00FEFF;opacity:1"></a-entity>
   </a-entity>
   
-  <!-- heater -->
-  <a-entity id="heater" position="1.654 0.483 1.283">
-      <!-- a-entity id="radiatortexture" geometry="primitive: plane; width:2.7; height: 0.5;" position="-0.009 0 0" rotation="0 -90 0" material="src: #radiator; transparent:true; opacity:0.9;alpha-test:0.5"></a-entity -->
-    <a-entity id="heaterblade1" mixin="heaterblade1mix"></a-entity>
-    <a-entity id="heatermid" mixin="heatermidmix"></a-entity>      
-    <a-entity id="heaterblade2" mixin="heaterblade2mix"></a-entity>
-  </a-entity>
-  
-  
-    
+   
   
   <a-entity id="posterfistbulb1" geometry="primitive: plane" scale="0.715 1 1" material="src: #posterfistbulb" position="-3.191 1.407 0.891" rotation="0 90 0"></a-entity>
-  <a-entity id="posterframe" position="-3.191 1.407 0.891" rotation="0 90 0">
-    <a-entity id="posterfleft" geometry="primitive: box; width: 0.05;height:1.0;depth:0.05" position="-0.382 0 0" material="color:FFFFFF"></a-entity>
-    <a-entity id="posterfright" geometry="primitive: box; width: 0.05;height:1.0;depth:0.05" position="0.382 0 0" material="color:FFFFFF"></a-entity>
-    <a-entity id="posterftop" geometry="primitive: box; width: 0.815;height:0.05;depth:0.05" position="0 0.525 0" material="color:FFFFFF"></a-entity>
-    <a-entity id="posterfbottom" geometry="primitive: box; width: 0.815;height:0.05;depth:0.05" position="0 -0.525 0" material="color:FFFFFF"></a-entity>
-  </a-entity>
-
+  
   <!-- loungeroom lamp -->
   <!-- SWITCHEDOFF a-entity id="loungeroomlamplight" light="type: spot; angle: 20; distance: 3; intensity: 0.5; color: #f6cd8b;" rotation="-90 0 0" position="0.88 1.5 3.2"></a-entity -->
   <a-entity id="loungeroomlamp" position="0.880 0.000 3.2" rotation="0 240 0">
@@ -658,15 +581,7 @@
   <!-- a-plane id="posterwall" scale="3.73 2.5 1" position="-0.150 1.240 3.610" rotation="0 180 0" material="color:#a9bbb3" visible="true"></a-plane -->
   
   <!-- coffee table -->
-  <a-entity id="coffeetable" geometry="primitive: cylinder; radius:0.51; height:0.01; segmentsRadial: 10; segmentsHeight: 1" position="-0.391 0.362 2.596" material="src:#coffeetablemarble; color:#DDDDDD">
-    <a-entity mixin="coffeetableleg" position="0.47 -0.171 0"></a-entity>
-    <a-entity mixin="coffeetableleg" position="-0.47 -0.171 0"></a-entity>
-    <a-entity mixin="coffeetableleg" position="0 -0.171 0.47"></a-entity>
-    <a-entity mixin="coffeetableleg" position="0 -0.171 -0.47"></a-entity>
-    <a-entity mixin="coffeetablecrossbar" rotation="0 0 90"></a-entity>
-    <a-entity mixin="coffeetablecrossbar" rotation="90 0 0"></a-entity>
-    
-    
+  <a-entity id="coffeetable" position="-0.391 0.362 2.596">
     
     <a-entity id="speaker" geometry="primitive: cylinder; radius:0.0475; height:0.22; segmentsRadial: 10; segmentsHeight: 1" position="0.229 0.119 0.223" material="src:#speakertex; color: #DDDDDD; metalness: 0.3">
       <a-entity id="speakerbottom" geometry="primitive: cylinder; radius:0.0475; height:0.22; segmentsRadial: 10; segmentsHeight: 1" material="src:#speakertex; color: #DDDDDD; metalness: 0.3"></a-entity>
@@ -683,7 +598,7 @@
   <a-entity id="heatparticles1" position="1.574 1.040 1.20" 
             scale="0.01 1.4 2.0" 
             rotation="0 180 180"
-            visible="false"
+            visible="true"
             particle-system="preset:dust;particleCount:400;velocityValue:0.01 0.05 0;maxParticleCount:400;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#FF0000;duration:NaN;maxAge:5;rotationAngle:3.14;accelerationValue:0 0 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;texture:https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png">
   </a-entity>
   <a-entity id="heatparticles2" position="1.574 1.040 1.20" 
@@ -693,14 +608,6 @@
             particle-system="preset:dust;particleCount:30;velocityValue:0.01 0.05 0;maxParticleCount:30;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#FF0000;duration:NaN;maxAge:5;rotationAngle:3.14;accelerationValue:0 0 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;texture:https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png">
   </a-entity>
   
-  
-  <a-entity id="balconywall01" 
-            geometry="width:0.17;depth:5.55;height:0.89" 
-            position="6.43148 0.43855 1.27572" 
-            rotation="0 -4.75 0"
-            material="color:green"
-            visible="false"
-            ></a-entity>
   
 </a-entity>
       
@@ -712,9 +619,9 @@
   <a-entity id="kitchenstuff">
     
     <a-entity id="cup" obj-model="obj: #cup-obj; mtl: #cup-mtl" scale="0.6 0.6 0.6" position="-1.708 0.800 -3.531"></a-entity>
-    <a-entity id="plank" mixin="choppingboard"></a-entity>
+    
     <a-entity id="stovetop" geometry="primitive:plane;width:0.60;height:0.60" rotation="-90 0 0" position="-2.215 0.797 -3.5614" material="src:#stovetop-tex"></a-entity>
-    <a-entity id="kitchencarpet1" geometry="primitive: box; width: 3.0; depth: 1; height: 0.01" material="src: #kitchenrug;repeat: 3 1; metalness: 0.5; roughness: 1" position="-0.367 0.032 -2.702"></a-entity>
+    
     <a-entity id="sinkwaterstream" visible="true" geometry="primitive: cylinder; radius:0.01; height: 0.410;segmentsRadial: 3; segmentsHeight: 1" rotation="0 0 0" position="0.001 0.821 -3.668" material="color:#3333FF;opacity:0.15"
               animation=" property:rotation; dur:10000; from:0 1 0; to:0 360 0; loop:true">
        
@@ -723,8 +630,8 @@
               animation="property:rotation; dur:2000; from:0 0 0; to:10 0 0; loop:true; dir:alternate;"
               animation__2="startEvents:drainwater; property:position; dur:3000; from:0.15 0.67 -3.554; to:0.15 0.55 -3.554;">
     </a-entity>
-    <a-entity id="platesandforks" scale="1 1 1" obj-model="obj: #platesandforks-obj; mtl: #platesandforks-mtl" position="0.738 0.792 -3.491" rotation="0 -52 0"></a-entity>
-    <a-entity id="dishwasher" scale="1 1 1" obj-model="obj: #dishwasher-obj; mtl: #dishwasher-mtl" material="color:#DDDDDD;" position="0 1 0"></a-entity>
+    
+    
     <a-entity id="dishwasherdoor" class="clickable" scale="1 1 1" obj-model="obj: #dishwasherdoor-obj; mtl: #dishwasherdoor-mtl" material="color:#DDDDDD;" position="0.8 0.064 -3.275"
               animation="startEvents:move; property:rotation; from:0 0 0; to:15 0 0; dur:1000">
     </a-entity>
@@ -736,7 +643,7 @@
     </a-entity>
     <a-entity id="fridge-medal" visible="false" scale="3 3 3" obj-model="obj: #medal-obj; mtl: #medal-mtl" material="color:#DDDDDD;" rotation="74 -90 -90" position="1.445 1.149 -3.236"></a-entity>
     <a-entity id="kitchentiledwall" geometry="primitive: plane;width:5; height:2.5"  material="src: #kitchentiles;repeat: 10 5" rotation="0 0 0" position="-0.766 1.173 -3.862"></a-entity>
-    <a-entity id="door" geometry="primitive:box;width: 0.1; height:2; depth:1" position="-6.059 1.003 -4.706" material="color:#DDDDDD"></a-entity>
+    
     
   </a-entity>
   
@@ -746,51 +653,26 @@
   
   <a-entity id="bathroomstuff">
  
-    <!-- Bathroom -->
-    <a-entity id="saunalights" position="-4.5 2.3 2.1">
-    
-      <a-entity id="saunaceilinglamp" mixin="ceilinglampmixin" ></a-entity>
-      <a-entity id="saunaceilinglampcenter" mixin="ceilinglampcentermixin"></a-entity>
       
-      <!-- SWITCHEDOFF a-entity id="saunalight3" light="type:spot;penumbra:0.2;angle:30;distance:2;decay:1.25" rotation="-51.87273398216908 -148.28835287339862 98.9223092449269" position="0.527 0.47 0.64565"></a-entity -->
-      
-      <!-- SWITCHEDOFF a-entity id="saunalight4" light="type:spot;penumbra:0.2;angle:30;distance:2;decay:1.25" rotation="-52.62273 -200 98.9223092449269" position="-1.065 0.47 0.64565"></a-entity -->
-    </a-entity>
-    
-    
-    <a-entity id="bathroom_lamp" position="-4.5 2.4 1">
-      <a-entity mixin="ceilinglampmixin" ></a-entity>
-      <a-entity mixin="ceilinglampcentermixin"></a-entity>
-    </a-entity>
-    
   
-  <a-entity id="washer" obj-model="obj: #washerobj; mtl: #washermtl" position="-5.622  0.429 -1.092" rotation="0 90 0"></a-entity>
   <a-entity id="washermiddle" geometry="primitive: circle; radius: 0.2" material="color:grey" position="-5.340 0.496 -1.092" rotation="0 90 0"></a-entity>
-  <a-entity id="toilet" obj-model="obj: #toiletobj; mtl: #toiletmtl" position="-5.693 0.063 0.320" rotation="0 0 0"></a-entity>
-  <a-entity id="shower" obj-model="obj: #shower-obj; mtl: #shower-mtl" position="-5.917 1.492 0.996" rotation="0 90 0"></a-entity>
   <a-entity id="showerwater" visible="true" position="-5.68 1.04 1.01" scale="0.2 1.4 0.2" particle-system="preset:dust;particleCount:200;velocityValue:0.01 0.05 0;maxParticleCount:400;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#3333FF;duration:NaN;maxAge:0.15;rotationAngle:3.14;accelerationValue:0 9.8 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;"></a-entity>
-    <a-entity id="showersoundentity" geometry="primitive:box" sound="src: #showersound; on: move03; loop:true;" class="clickable" position="-5.68 1.04 1.01"></a-entity>
+    <a-entity id="showersoundentity" sound="src: #showersound; on: move03; loop:true;" class="clickable" position="-5.68 1.04 1.01"></a-entity>
     <a-entity id="showerwaterversion2" position="-5.701 1.940 1.031" visible="true">
       <a-entity position="0 -1.01 0" geometry="primitive: cone; radiusBottom: 0.47; radiusTop: 0.05; segmentsRadial:10; segmentsHeight:1; height: 2:" material="color:#3333FF;opacity:0.15"></a-entity>
     </a-entity>
       
-  <a-entity id="bathroomsink" obj-model="obj: #bathroomsink-obj; mtl: #bathroomsink-mtl" scale="1 1 1" position="-5.693 0.884 -0.375" rotation="0 90 0"></a-entity>
-  <a-entity id="floorheatertablet" geometry="primitive: cone;  radiusBottom: 0.11; radiusTop: 0.1; height:0.01;  segmentsRadial: 4; segmentsHeight: 1;" 
-            scale="1.260 1 1.260" 
-            position="-5.918 1.425 -0.192" 
-            rotation="45 0 -90"
-            material="color:white">
-    </a-entity>
-  <a-entity id="floorheatertabletscreen" geometry="primitive: plane; width: 0.16; height: 0.11;" material="color:#52bcec" position="-5.912 1.444 -0.192" rotation="0 90 0">
+  
+  <a-entity id="floorheatertabletscreen" position="-5.912 1.444 -0.192" rotation="0 90 0">
     <a-entity id="floorheatertablettext" position="0 0.034 0.001" text="align: center; value:21 C;xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:30;color:#000000"></a-entity>
   </a-entity>
     
     
   <!-- bathroom wall -->
-  <a-entity id="bathroomwall" geometry="primitive: plane; width: 3.45; height: 2.5;" position="-5.925 1.250 -0.157" rotation="0 90 0" material="src:#bathroomtiles; repeat: 3.45 2.5; offset: 0 0.05;" ></a-entity>
-  <a-entity id="bathroomwall2" geometry="primitive: plane; width: 1.25; height: 2.5;" position="-3.316 1.250 0.934" rotation="0 -90 0" material="src:#bathroomtiles; repeat: 1.25 2.5; offset: 0 0.05;" ></a-entity>
-  <a-entity id="bathroomwall3" geometry="primitive: plane; width: 1.25; height: 2.5;" position="-3.316 1.250 -1.259" rotation="0 -90 0" material="src:#bathroomtiles; repeat: 1.25 2.5; offset: 0 0.05;" ></a-entity>
-  <a-entity id="bathroomwall4" geometry="primitive: plane; width: 2.65; height: 2.5;" position="-4.616 1.250 -1.860" rotation="0 0 0" material="src:#bathroomtiles; repeat: 2.65 2.5; offset: 0.07 0.05;" ></a-entity>  
+  <a-entity id="bathroomwall" visible="false" geometry="primitive: plane; width: 3.45; height: 2.5;" position="-5.925 1.250 -0.157" rotation="0 90 0" material="src:#bathroomtiles; repeat: 3.45 2.5; offset: 0 0.05;" ></a-entity>
+  <a-entity id="bathroomwall2" visible="false" geometry="primitive: plane; width: 1.25; height: 2.5;" position="-3.316 1.250 0.934" rotation="0 -90 0" material="src:#bathroomtiles; repeat: 1.25 2.5; offset: 0 0.05;" ></a-entity>
+  <a-entity id="bathroomwall3" visible="false" geometry="primitive: plane; width: 1.25; height: 2.5;" position="-3.316 1.250 -1.259" rotation="0 -90 0" material="src:#bathroomtiles; repeat: 1.25 2.5; offset: 0 0.05;" ></a-entity>
+  <a-entity id="bathroomwall4" visible="false" geometry="primitive: plane; width: 2.65; height: 2.5;" position="-4.616 1.250 -1.860" rotation="0 0 0" material="src:#bathroomtiles; repeat: 2.65 2.5; offset: 0.07 0.05;" ></a-entity>  
 
   <!-- sauna wall -->
   <a-entity id="saunawalls" visible="true">    
@@ -829,7 +711,7 @@
 	  <a-entity id="wingright1" mixin="wingright"></a-entity>
   </a-entity>
   
-  <a-entity id="vampirebat2" mixin="vampirebat" position="-0.93 1.07 3.51" rotation="0 180 10"
+  <a-entity id="vampirebat2" mixin="vampirebat" position="-0.93 1.07 3.51" rotation="0 180 10" 
             animation="property:position; startEvents:spawnbats; dur:1900; from:-0.93 1.07 3.51; to:-0.30 3 3.51; easing:linear">
     <a-entity id="batbody2" obj-model="obj: #vbatbody-obj; mtl: #vbatbody-mtl;"></a-entity>
     <a-entity id="wingleft2" mixin="wingleft"></a-entity>
@@ -974,7 +856,6 @@
       });
 </script>  
     
-
-    
+   
   </body>
 </html>
