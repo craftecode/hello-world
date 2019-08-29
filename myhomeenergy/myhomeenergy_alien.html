@@ -15,6 +15,25 @@
     <script src="rotation-reader.js"></script>
     <script src="proxy-emit.js"></script> 
     
+    <script>
+      //this is only on the heater
+  AFRAME.registerComponent('removeclass', {
+    schema: {
+      class: {default: 'nothing'}
+    },
+
+    init: function () {
+      var data = this.data;
+      var el = this.el;  
+
+      el.addEventListener('click', function () {
+        el.setAttribute('class', data.class);
+      });
+
+    }
+  });
+</script>
+    
     <!-- 
 Contents:
 
@@ -134,24 +153,28 @@ a script for managing the energy bar progression
                  animation="startEvents:mouseenter; property:material.opacity; to:0.4; dur:600"
                  animation__2="startEvents:mouseenter; property:material.color; to:#dbcb1a; dur:600; loop:true"
                  animation__3="startEvents:mouseenter; delay:600; property:material.color; dir: alternate; from:#f9fc2f; to:#ffffff; dur:600; loop:true"
-                 animation__4="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
+                 animation__4="property:scale; dur:1500; to:0 0 0; startEvents: shrink; loop:0"
                  animation__5="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"
                  event-set__blackout="_event: click; _target: #blackout; scale: 1 1 1"></a-mixin>
         
-        <a-mixin id="eboxbathroom" scale="0 0 0"></a-mixin>
+        <a-mixin id="eboxbathroom" scale="0 0 0"
+                 ></a-mixin> <!-- All the bathroom eboxes start at zero size and are expanded when you click the 'bathroom-move-target' -->
         
          <!-- Improvement cards (icbox), text (icboxtext), button (infocardbutton) and button text  (infocardbuttontext) -->
-        <a-mixin id="icbox" geometry="primitive:cylinder; radius: 0.66; height: 0.01; segmentsHeight: 1; segmentsRadial: 12" material="color:white" rotation="-90 90 0" scale="1.6 1 1" position="1.6 1.6 0"></a-mixin>
-        <a-mixin id="icboxtext" position="1.6 1.6 0" rotation="0 -90 0" text="align: center; zOffset:0.01;baseline:top;wrapCount:31;color:black;"></a-mixin>
+        <a-mixin id="icbox" position="1.19 1.5 0" geometry="primitive:cylinder; radius: 0.37; height: 0.01; segmentsHeight: 1; segmentsRadial: 30" material="color:white" rotation="-90 90 0" scale="1.6 1 1" ></a-mixin>
+        <a-mixin id="icboxtext" position="1.19 1.5 0" rotation="0 -90 0" text="align: center; zOffset:0.01;baseline:center;wrapCount:31;color:black;"></a-mixin>
         <a-mixin id="icboxOLD" scale="0 0 0" position="1.6 1.6 0" rotation="0 270 0" geometry="primitive:plane; width: 1.2; height: 0.7" material="color:#e8e8e8;shader:flat;opacity:1"></a-mixin>
         <a-mixin id="icboxtextOLD" position="0 .182 0" text="align: center; xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:31;color:black;"></a-mixin>
-        <a-mixin id="infocardbutton" position="1.586 1.14 0" rotation="90 -90 0" geometry="primitive: cone; height: 0.026; radiusTop: 0.15; radiusBottom: 0.155" 
+        <a-mixin id="infocardbutton" position="1.19 1.165 0.389" rotation="90 -90 0" geometry="primitive: cone; height: 0.026; radiusTop: 0.15; radiusBottom: 0.155" 
                  material="color: #f9fc2f;"
                  animation=" startEvents:mouseenter; property:material.color; from:#f9fc2f; to:#dbcb1a; dur:100"
                  animation__2=" startEvents:mouseleave; property:material.color; from:#dbcb1a; to:#f9fc2f; dur:100"
                  sound="src: url(https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2FButton_SoundBible_459633989.mp3?v=1564666857762); on: click"
-                 event-set__backoutclear="_event: click; _target: #blackout; scale: 0 0 0"> </a-mixin>
-        <a-mixin id="infocardbuttontext" position="1.583 1.190 0" rotation="0 -90 0" scale="1 1 1" text="align: center; value:Take\naction!;zOffset:0.02;baseline:top;wrapCount:30;color:#000000"></a-mixin>
+                 event-set__backoutclear="_event: click; _target: #blackout; scale: 0 0 0"
+                 
+                 event-set__showbathroomremaining="_event: click; _target: #bathroomeboxobjects; position:0 0 0"
+                 > </a-mixin>
+        <a-mixin id="infocardbuttontext" position="1.19 1.223 0.389" rotation="0 -90 0" scale="1 1 1" text="align: center; value:Take\naction!;zOffset:0.02;baseline:top;wrapCount:30;color:#000000"></a-mixin>
         <a-mixin id="infocardpositioner" scale="0 0 0"></a-mixin>
         
         <a-mixin id="ibulletpoint" visible="false" scale="0.09 0.09 0.09" geometry="primitive: triangle;vertexA: 0.05 0.07 0; vertexB: -0.05 0.07 0; vertexC: 0 -0.07 0;" material="color:green;opacity:1; shader: flat;"></a-mixin>
@@ -184,31 +207,40 @@ a script for managing the energy bar progression
                 event-set__eboxfloor="_event: click; _target: #ebox-floorheating; scale: 1 1 1"
                 event-set__eboxsauna="_event: click; _target: #ebox-sauna; scale: 1 1 1"
                 event-set__eboxshower="_event: click; _target: #ebox-shower; scale: 1 1 1"
-                event-set__alien="_event: click; _target: #alien; position: 3 0.38 1"
+                event-set__alien="_event: click; _target: #alien; position: 2.1 0.46 0.380"
                 event-set__alientextparent="_event: click; _target: #alientext01_parent; visible:true"
                 event-set__alientext01="_event: click; _target: #alientext01; visible:false"
                 event-set__alientext02="_event: click; _target: #alientext02; visible: true"
-                proxy-emit="target:camparent; event:click; emission: move03"              
+                event-set__hidemainroomeboxes="_event: click; _target:#eboxmainroomcontainer; position:0 -4 0"
+                proxy-emit="target:camparent; event:click; emission: move03"
+                ></a-entity>
+        
+        <a-entity id="loungeroom-move-target" geometry="primitive: plane; height: 0.8; width: 0.7" material="src: #footsteps; transparent:true" rotation="-90 -90 0" position="-0.65 0.05 -0.3" scale="1 1 1"
+                  class="clickable"
+                  proxy-emit="target:camparent; event:click; emission: move04"
+                  event-set__showremainingmainroomeboxes="_event:click; _target:#eboxmainroomcontainer; position:0 0 0"
+                  event-set__hidebathroomeboxes="_event:click; _target:#bathroomeboxobjects; position:0 -4 0"
                 ></a-entity>
       
       <a-entity id="alien" gltf-model="#alien_asset" position="2.1 0.46 0.380" scale="0.5 0.5 0.5" rotation="0 -107 0" 
                 animation="property:position; to: 3.5 5 3; dur:1500; startEvents: leave">
         <a-entity id="alientext01_parent" position="2 2.1 0">
           <a-entity id="speechbubble_01" geometry="primitive:cylinder; radius: 0.66; height: 0.01; segmentsHeight: 1; segmentsRadial: 12" material="color:white" rotation="90 0 0" scale="2.5 1 1"></a-entity>
-          <a-entity id="speechbubbleoutline_01" geometry="primitive:cylinder; radius: 0.7; height: 0.004; segmentsHeight: 1; segmentsRadial: 12" material="color:black" rotation="90 0 0" scale="2.42 1 1" position="0.005"></a-entity>
-          <a-entity id="alientext01" text="value: We are taking energy gobbling homes to planet Boring. We will check on you soon!; color:black; zOffset:0.006; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
-          <a-entity id="alientext02" visible="false" text="value: It looks like you are doing a good job here. Thanks for caring about the planet!; color:black; zOffset:0.006; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
+          <a-entity id="speechbubbleoutline_01" geometry="primitive:cylinder; radius: 0.7; height: 0.004; segmentsHeight: 1; segmentsRadial: 12" material="color:black" rotation="90 0 0" scale="2.42 1 1" position="0 0 -0.01"></a-entity>
+          <a-entity id="alientext01" text="value: We are taking energy gobbling homes to planet Boring. We will check on you soon!; color:black; zOffset:0.01; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
+          <a-entity id="alientext02" visible="false" text="value: It looks like you are doing a good job here. Thanks for caring about the planet!; color:black; zOffset:0.01; align:center;  width:  3.1;  wrapCount:  25"></a-entity>
           
         </a-entity>
         </a-entity>
         
-        <a-entity id="windowlook" geometry="primitive: plane; width: 5; height: 1.6" rotation="0 -90 0" position="1.68 1.56 0.28" visible="false" class="clickable"
+        <a-entity id="windowlook" geometry="primitive: plane; width: 4; height: 1.6" rotation="0 -90 0" position="1.68 1.56 1.38" visible="false" class="clickable"
                   event-set__makethisgo="_event: mouseleave; position: 0 -10 0"
                   event-set__beginmessagego="_event: mouseleave; _target: #alientext01_parent; visible:false"
                   event-set__beginebox="_event: mouseleave; _target: #eboxcontainer; position: 0 0 0"
                   event-set__movetargetvisible="_event: mouseleave; _target: #bathroom-move-target; scale: 1 1 1"
                   proxy-emit="target:alien; event:mouseleave; emission: leave"
-                  event-set__stopscan="_event: mouseenter; _target: #alienhousescanparent; visible:false"></a-entity>
+                  event-set__stopscan="_event: mouseenter; _target: #alienhousescanparent; visible:false"
+                  event-set__cursorvisible="_event: mouseleave; _target: #cursor; visible: true"></a-entity>
         
         <!-- Share link could be brought down with this event-set__sharebutton1="_event: click; _target: #sharebutton1; position:-1.4 1.6 -0.182"   - but maybe do a button on the tablet instead --> 
         <a-link id="sharebutton1" href="whatsapp://send?text=Hey! Check out this energy smart VR experience - https://opposite-stranger.glitch.me" data-action="share/whatsapp/share" position="-1.4 -10 -0.182" scale=".3 .3 .3" rotation="0 -90 0" class="clickable" title="Share via WhatsApp" image="#posterfistbulb"></a-link>  
@@ -219,14 +251,14 @@ a script for managing the energy bar progression
       
       <a-entity id="outside_objects">
           
-        <a-entity id="ufo" scale="1 1 1" gltf-model="#ufo-glb" position="15 2 -18"
-                  animation="property:position; from: 15 2 -18; to: 15 2 23; dir:alternate; loop:true; dur:14000; easing:linear">
+        <a-entity id="ufo" scale="2 2 2" gltf-model="#ufo-glb" position="25.009 3.696 -1.473"
+                  animation="property:position; from: 25.009 3.696 -18; to: 25.009 3.696 23; dir:alternate; loop:true; dur:14000; easing:linear">
         <a-entity id="ufo-tractorbeam" geometry="primitive:cone; radius-top: 0.2; radius-bottom:1; height:5;" position="0 -2.5 0" material="color:green; opacity:0.4"></a-entity>
         </a-entity>
         
         <!-- Scan moved below camera/player for transparency ordering -->
         
-        <a-entity gltf-model="#house" position="15 -2.5 -0.8" rotation="0 -90 0"></a-entity>
+        <a-entity id="outsidehouse01" gltf-model="#house" position="25.818 -1.985 -1.478" scale="4 4 4" rotation="0 -90 0"></a-entity>
                 
       </a-entity>
         
@@ -244,6 +276,8 @@ a script for managing the energy bar progression
             visible="false"
             particle-system="preset:dust;particleCount:30;velocityValue:0.01 0.05 0;maxParticleCount:30;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#FF0000;duration:NaN;maxAge:5;rotationAngle:3.14;accelerationValue:0 0 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;texture:https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png">
         </a-entity>
+        <a-entity id="showerwater" visible="true" position="-5.68 1.04 1.01" scale="0.2 1.4 0.2" particle-system="preset:dust;particleCount:200;velocityValue:0.01 0.05 0;maxParticleCount:400;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#3333FF;duration:NaN;maxAge:0.15;rotationAngle:3.14;accelerationValue:0 9.8 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;"></a-entity>
+        
 
           
   
@@ -251,9 +285,11 @@ a script for managing the energy bar progression
       <!-- Player -->
       <a-entity id="camparent" rotation="0 0 0" position="-0.65 0.05 -0.3"
                 animation__3="easing:linear; startEvents:move03; property:position; to:-3.46 0.05 -0.16; dur:3500"
+                animation__4="easing:linear; startEvents:move04; property:position; to:-0.65 0.05 -0.3; dur:3500"
                 >
         
-        <a-entity id="blackout" position="0 1.6 0" geometry="primitive:cylinder; radius: 2.65; height: 1.5;" scale="0 0 0" material="opacity: 0.01; side: back; color: #000" class="clickable"></a-entity>
+        <a-entity id="blackout" position="0 1.1 0" geometry="primitive:cylinder; radius: 2.65; height: 2.3;" scale="0 0 0" material="opacity: 0.01; side: back; color: #000" class="clickable"></a-entity>
+        
         
         <a-entity visible="false" id="base" position="0 1.8 0" geometry="primitive:box;width:0.1;height:0.1;depth:0.1" material="wireframe:true"></a-entity>
 	      
@@ -264,8 +300,9 @@ a script for managing the energy bar progression
                     position="0 0 -1"
                     geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
                     material="color: #FFF; shader: flat;"
-                    animation="property:scale; from: 0.2 0.2 0.2; to: 1 1 1; dur: 150; startEvents: click;" 
-                    animation__2="startEvents: fusing;property: scale;from: 1 1 1;to: 0.2 0.2 0.2;dur: 1000">
+                    animation="property:scale; from: 1 1 1; to: 0.2 0.2 0.2; dur: 150; startEvents: click;" 
+                    animation__2="startEvents: fusing;property: scale;from: 0.2 0.2 0.2;to: 1 1 1;dur: 1000"
+                    visible="false">
           </a-entity>
           
 
@@ -417,7 +454,7 @@ a script for managing the energy bar progression
       </a-entity>
       
       <!-- sauna -->
-      <a-entity id="infocard_sauna_pos" rotation="0 240 0" mixin="infocardpositioner">
+      <a-entity id="infocard_sauna_pos" rotation="0 -114.6 0" mixin="infocardpositioner">
         <a-entity id="infocard_sauna_buttontext" mixin="infocardbuttontext"></a-entity>
         <a-entity id="infocard_sauna_box" mixin="icbox" class="card"></a-entity>
         <a-entity id="infocard_sauna_text" mixin="icboxtext" text="value:Heating your sauna amounts to 5%\nof energy consumption in your home.\n\nTurn it off when it is not in use!;"></a-entity>
@@ -460,9 +497,11 @@ a script for managing the energy bar progression
       </a-entity>
 <!-- END OF THE PLAYER/CAMERA, beginning of other stuff -->
 
-     
+  <a-entity id="floorheatertabletscreen" geometry="primitive: plane; width: 0.16; height: 0.11;" material="color:#52bcec" position="-5.91 1.444 -0.192" rotation="0 90 0">
+    <a-entity id="floorheatertablettext" position="0 0 0" text="align: center; value:21 C;xOffset:0.0;yOffset:0.0;zOffset:0.01;baseline:center;wrapCount:30;color:#000000"></a-entity>
+  </a-entity>   
   
-  
+  <a-entity id="blackoutbathroom" position="-3.46 1.1 -0.16" geometry="primitive:cylinder; radius: 1.1; height: 2.3;" scale="0 0 0" material="opacity: 0.01; side: back; color: #000" class="clickable"></a-entity>
 
   <a-entity id="alienhousescanparent" position="6 4.98 0" animation="property:rotation; from: 0 -43 0; to: 0 31 0; dur: 2000; dir:alternate; loop: true;">
           <a-entity rotation="0 0 -51.7">
@@ -480,7 +519,7 @@ a script for managing the energy bar progression
   <!-- LIGHTS - note that only x rotation appears to affect spot light direction -->
   <a-light id="ambientLight" type="ambient" color="#fff" intensity="0.3"></a-light>
   
-  <a-entity position="0 -7 0" id="feiss_environment" environment="preset: forest; dressingAmount: 200; playArea: 1; lighting: none; dressingColor: #c8c8c8; groundColor: #f1e8c9; groundColor2: #eaf4ff">  </a-entity>
+  <a-entity id="feiss_environment" position="0 -4.5 0" environment="preset: forest; dressingAmount: 200; playArea: 1; lighting: none; dressingColor: #c8c8c8; groundColor: #f1e8c9; groundColor2: #eaf4ff">  </a-entity>
   <!-- Replacement lights -->
   <a-entity id="hemilight" position="0 50 0" light="angle: 60; color: #ffffff; decay: 1; distance: 0; groundColor: #888; intensity: 0.6; type: hemisphere;"></a-entity>
   
@@ -493,18 +532,18 @@ a script for managing the energy bar progression
       <a-entity position="0 -1.01 0" geometry="primitive: cone; radiusBottom: 0.47; radiusTop: 0.05; segmentsRadial:10; segmentsHeight:1; height: 2;" material="color:#3333FF; opacity:0.3"></a-entity>
     </a-entity>
         
-  <a-entity id="floorheatertabletscreen" position="-5.85 1.444 -0.192" rotation="0 90 0">
-    <a-entity id="floorheatertablettext" position="0 0.034 0.001" text="align: center; value:21 C;xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:30;color:#000000"></a-entity>
-  </a-entity>
 
   <!-- ENERGY HIGHLIGHT BOXES -->
   <a-entity id="eboxcontainer" position="0 -4 0">
-        
+    
+    
+  <a-entity id="eboxmainroomcontainer">      
   <a-entity id="ebox-heater" geometry="primitive:box; depth: 2.8; height: 0.7; width: 0.3" position="1.65387 0.49518 1.25731" class="clickable" mixin="ebox"
-            event-set__open="_event: click; _target: #ic0103_pos; scale: 1.6 1 1"></a-entity>
+            event-set__open="_event: click; _target: #ic0103_pos; scale: 1.6 1 1"
+            removeclass></a-entity>
 
         <a-entity id="ebox-devices"
-                  animation__4="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
+                  animation__4="property:scale; dur:1500; to:0.0 0.0 0.0; startEvents: shrink; loop:0"
                   animation__5="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0">
   <a-entity id="ebox-lamp" geometry="primitive:box; depth: 0.45; height: 1.8; width: 0.45" position="0.86341 0.8533 3.24257" class="clickable" mixin="ebox"
             event-set__open="_event: click; _target: #ic0102_pos; scale: 1.6 1 1"
@@ -536,26 +575,42 @@ a script for managing the energy bar progression
             event-set__open="_event: click; _target: #infocard_fridge_pos; scale: 1.6 1 1"
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
             animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
+  </a-entity> <!-- ebox mainroom container closure tag -->  
+    
   
+  <a-entity id="bathroomeboxobjects">  
   <a-entity id="ebox-washingmachine" geometry="primitive:box; width: 0.7; depth: 0.8" position="-5.60084 0.4212 -1.09403" class="clickable" mixin="ebox eboxbathroom"
             event-set__open="_event: click; _target: #infocard_laundry_pos; scale: 1.6 1 1"
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
-            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
+            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"
+            animation__hideme="property:position; delay:1500; dur:1; to:-0.65 -4 -0.3; startEvents: shrink; loop:0"
+            event-set__hideall="_event: click; _target: #bathroomeboxobjects; position:0 -4 0"
+            removeclass></a-entity>
 
   <a-entity id="ebox-floorheating" geometry="primitive:box; width: 0.3; depth: 0.35; height: 0.3" position="-5.94024 1.43393 -0.19337" class="clickable" mixin="ebox eboxbathroom"
             event-set__open="_event: click; _target: #infocard_floorheating_pos; scale: 1.6 1 1"
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
-            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
+            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"
+            animation__hideme="property:position; delay:1500; dur:1; to:-0.65 -4 -0.3; startEvents: shrink; loop:0"
+            event-set__hideall="_event: click; _target: #bathroomeboxobjects; position:0 -4 0"
+            removeclass></a-entity>
 
   <a-entity id="ebox-shower" geometry="primitive:box; width: 0.7; depth: 0.8; height: 2.1" position="-5.72198 1.0283 1.08202" class="clickable" mixin="ebox eboxbathroom"
             event-set__open="_event: click; _target: #infocard_shower_pos; scale: 1.6 1 1"
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
-            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
+            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"
+            animation__hideme="property:position; delay:1500; dur:1; to:-0.65 -4 -0.3; startEvents: shrink; loop:0"
+            event-set__hideall="_event: click; _target: #bathroomeboxobjects; position:0 -4 0"
+            removeclass></a-entity>
 
   <a-entity id="ebox-sauna" geometry="primitive:box; width: 0.7; depth: 0.3; height: 2.3" position="-3.85411 1.19709 1.5137" class="clickable" mixin="ebox eboxbathroom"
             event-set__open="_event: click; _target: #infocard_sauna_pos; scale: 1.6 1 1"
             animation="property:scale; dur:1500; to:0.1 0.1 0.1; startEvents: shrink; loop:0"
-            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"></a-entity>
+            animation__2="property:position; dur:1500; to:-0.65 1 -0.3; startEvents: shrink; loop:0"
+            animation__hideme="property:position; delay:1500; dur:1; to:-0.65 -4 -0.3; startEvents: shrink; loop:0"
+            event-set__hideall="_event: click; _target: #bathroomeboxobjects; position:0 -4 0"
+            removeclass></a-entity>
+  </a-entity>  
   
   </a-entity> <!-- End of EBOX container-->
  
@@ -610,9 +665,9 @@ a script for managing the energy bar progression
     <a-entity id="kitchentiledwall" geometry="primitive: plane;width:5; height:2.5"  material="src: #kitchentiles;repeat: 10 5" rotation="0 0 0" position="-0.766 1.173 -3.862"></a-entity>
     
     <a-entity id="washermiddle" visible="false" geometry="primitive: circle; radius: 0.2" material="color:grey" position="-5.335 0.496 -1.092" rotation="0 90 0"></a-entity>
-    <a-entity id="showerwater" visible="true" position="-5.68 1.04 1.01" scale="0.2 1.4 0.2" particle-system="preset:dust;particleCount:200;velocityValue:0.01 0.05 0;maxParticleCount:400;rotationAngleSpread:1;size:0.05;positionSpread:1 1 1 NaN;color:#3333FF;duration:NaN;maxAge:0.15;rotationAngle:3.14;accelerationValue:0 9.8 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;"></a-entity>
+    
     <a-entity id="showersoundentity" sound="src: #showersound; on: move03; loop:true;" class="clickable" position="-5.68 1.04 1.01"></a-entity>
-    <!-- Showerwater version 2 moved to above eboxes for transparency requirements -->
+    <!-- Showerwater versions 1 & 2 moved to above eboxes for transparency requirements -->
     <!-- Floorheater text moved to above eboxes for transparency requirements -->
   
 
@@ -732,6 +787,9 @@ a script for managing the energy bar progression
 </script>
     
 
+    
+
+    
 
   </body>
 </html>
