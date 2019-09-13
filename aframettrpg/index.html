@@ -18,6 +18,7 @@
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     
   </head>
   <body>
@@ -87,6 +88,11 @@
       </a-assets>
       
       
+      <!-- I tried shrinking all the contents. The head that loads is still big if someone else is looking at you but you and your hands appear at the scale of the 
+       shrinky thing and I think that's great - it means you can just shrink the camera to make it fit in small view, no messing with depth of field or whatever
+      another note - the superhands would only drag things a little distance for a large distance of moving you hands, something to do with the scale change I guess -->
+      
+      
       <!-- a-entity id="cameraRig" position="0 1.6 0">
         <a-entity id="head" camera wasd-controls look-controls></a-entity>
         <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
@@ -103,37 +109,37 @@
       </a-entity -->
       
       <!-- Test box for superhands-->
-      <a-box id="superhandstestbox" hoverable grabbable stretchable draggable droppable color="blue" position="0 0 3"></a-box>
+      
+      <!-- animation__birdseyeview="property:position; to: 0 15 5; dur: 4000; easing:linear; loop:0; startEvents:birdseyeview" 
+            event-set__shrinkme="_event: click; _target: #speechbubble; visible: true" -->
+      
+      <!-- This is the player for networked aframe -->
+      <a-entity id="rig" 
+                >
+        <a-entity id="player"
+                  camera
+                  networked="template:#avatar-template;attachTemplateToLocal:false;"
+                  position="0 1.6 0"
+                  spawn-in-circle="radius:1"
+                  wasd-controls
+                  look-controls
+                  >
+          <a-entity id="cursor" raycaster="objects: .clickable" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #FFF; shader: flat;" animation="property:scale; from: 0.2 0.2 0.2; to: 1 1 1; dur: 150; startEvents: click;" animation__2="startEvents: fusing;property: scale;from: 1 1 1;to: 0.2 0.2 0.2;dur: 1000"></a-entity>
+          <a-sphere class="head" visible="false" random-color></a-sphere>
+        </a-entity>
+        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="left"></a-entity>
+        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="right"></a-entity>
+      </a-entity>
+      
+      <a-entity id="shrinker" scale="0.2 0.2 0.2">
+        
+        <a-entity id="shrinkbutton" class="clickable" geometry="primitive:box" material="color:red" 
+                  event-set__shrinkrig="_event: click; _target: #rig; scale: 0.2 0.2 0.2"></a-entity>
+        
+        <a-box id="superhandstestbox" hoverable grabbable stretchable draggable droppable color="blue" position="0 0 -0.2"></a-box>
       
       <a-box id="test2" clickable class="clickable" color="blue" position="-2.5 0 -2"
              animation__1="property:position; to: -2.5 0.125 -10; loop:0; easing:linear; dur:2000;  startEvents:click"></a-box>
-      
-      <!-- The following is the basic superhands to try if the above doesn't work -->
-      <!-- a-entity>
-        <a-camera></a-camera>
-        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="left"></a-entity>
-        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="right"></a-entity>
-      </a-entity -->
-      
-      
-      <!-- This is the player for networked aframe -->
-      <a-entity id="player"
-                camera
-                networked="template:#avatar-template;attachTemplateToLocal:false;"
-                position="0 1.6 0"
-                spawn-in-circle="radius:3"
-                wasd-controls
-                look-controls
-                animation__birdseyeview="property:position; to: 0 15 5; dur: 4000; easing:linear; loop:0; startEvents:birdseyeview">
-        <a-sphere class="head"
-          visible="false"
-          random-color
-        ></a-sphere>
-        <!-- The hands in the example were attached to a rig -->
-        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="left"></a-entity>
-        <a-entity sphere-collider="objects: a-box" super-hands hand-controls="right"></a-entity> 
-      </a-entity>
-      
       
       <!-- a-entity id="1" mixin="myAtlas" atlas-uvs="column: 1; row: 1"></a-entity -->
       
@@ -157,9 +163,10 @@
       
       
       
-      <a-entity id="bugbear02-base" geometry="primitive: cone; radiusBottom: 1.1; radiusTop: 1.03; height: 0.2" material="color: black" position="0 0 -7.5">
-      <a-entity id="bugbear02a" material="src: #bugbear01v2; transparent: true" geometry="primitive: plane; height: 2; width: 2" position="0 1.097 0.04912"></a-entity>
-      <a-entity id="bugbear02b" material="src: #bugbear01v2; transparent: true" geometry="primitive: plane; height: 2; width: 2" position="0 1.097 -0.04912" rotation="0 180 0"></a-entity>
+      <a-entity id="bugbear02-base" geometry="primitive: cone; radiusBottom: 1.1; radiusTop: 1.03; height: 0.2" material="color: black" position="0 0 -7.5"
+                grabbable stretchable draggable droppable>
+      <a-entity id="bugbear02a" material="src: #bugbear01v2; transparent: true" geometry="primitive: plane; height: 2; width: 2" position="0 1.097 0.06"></a-entity>
+      <a-entity id="bugbear02b" material="src: #bugbear01v2; transparent: true" geometry="primitive: plane; height: 2; width: 2" position="0 1.097 -0.06" rotation="0 180 0"></a-entity>
         <a-entity id="backingcard02" visible="true">
           <a-entity geometry="height: 1.2; width: 2; depth: 0.09" material="color: whitesmoke" position="0 0.64949 0"></a-entity>
           <a-entity geometry="primitive: cylinder; height: 0.09; thetaLength: 180; thetaStart: 90" material="color: whitesmoke" position="0 1.24756 0" rotation="90 0"></a-entity>
@@ -237,6 +244,8 @@
       <a-entity id="ceiling" geometry="primitive:plane; width: 20; height: 20;" material="src: #dirt;repeat: 14 14" position="0 3 -8.7" rotation="90 0 0"></a-entity>
       
       
+        </a-entity>
+        
     </a-scene>
 
     
@@ -269,7 +278,7 @@ Old buttons
       }
       
       function birdseyeview() {
-        var thing = 'player';
+        var thing = 'rig';
         var emission = 'birdseyeview';
         document.getElementById(thing).emit(emission)
       }
