@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>3dio Aframe 8.2 Object test</title>
+    <meta name="description" content="3dio object test">
+
+      <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://dist.3d.io/3dio-js/2.x.x/3dio.min.js"></script>
+    <!-- They've switched focus but their thing will remain open source, here's the latest js - https://dist.3d.io/3dio-js/1.1.x/3dio.min.js -->
+    <!-- documentation = https://3d.io/docs/api/2/ -->
+    <!-- GitHub page -  https://github.com/archilogic-com/3dio-js -->
+    <!-- 3dio library https://furniture.3d.io/?_ga=2.19840959.649217029.1551780575-1110831064.1551780575#furnitureId=93d66d4f-7824-4793-8ecd-8e96599b834a -->
+   
+
+    
+  </head>
+  <body>
+    <a-scene physics >
+
+      <a-entity light="type:spot; color:#888; angle:60" position="0 3 -2" rotation="-90 0 0"></a-entity>
+      
+      <a-sky color="#000"></a-sky>
+      
+      <a-entity id="3do_lounge" io3d-furniture="id:7db61b68-67ea-4cfc-892b-76bfd98c16fe" position="0 0 -2"></a-entity>
+      <a-entity id="3do_washer" io3d-furniture="id:28e7c2f6-42f9-4c33-b1e7-3972dc461d59" position="2 0 -2"></a-entity>
+ 
+      
+    </a-scene>
+  </body>
+</html>
