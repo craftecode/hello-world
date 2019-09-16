@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <title>my energy home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="//unpkg.com/aframe-particle-system-component/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.2.x/dist/aframe-teleport-controls.min.js"></script>
+    
+    <!-- ic_button class is currently not described/used though it is on the buttons. it was for a js thing i dropped. -->
+  </head>  
+  <body>
+    
+<a-scene stats>
+            
+      <!-- Asset management system. -->
+	    <a-assets>
+
+		    <!-- The object for the space is loaded here -->
+		    <a-asset-item id="sculpt-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.obj"></a-asset-item>
+		    <a-asset-item id="sculpt-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/OttoBrandt_24-01-2019_specularityreduction.mtl"></a-asset-item>
+        
+        <img id="city2" src="https://raw.githubusercontent.com/craftecode/hello-world/master/city2.jpg">
+        
+        <a-asset-item id="table-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.obj"></a-asset-item>
+		    <a-asset-item id="table-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/table.mtl"></a-asset-item>
+        
+        <a-asset-item id="chairs-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.obj"></a-asset-item>
+		    <a-asset-item id="chairs-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/chairs.mtl"></a-asset-item>
+        
+        <!-- wall tv -->
+        <a-asset-item id="tv-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.obj"></a-asset-item>
+		    <a-asset-item id="tv-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltv.mtl"></a-asset-item>
+
+        <!-- wall tv bench -->
+        <a-asset-item id="tvbench-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.obj"></a-asset-item>
+		    <a-asset-item id="tvbench-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/walltvbench.mtl"></a-asset-item>
+        
+        <img id="tvimage" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tvscreenimage.jpg">
+        
+        <img id="tvbenchwood" src="https://raw.githubusercontent.com/craftecode/hello-world/master/wood03.jpg">
+        
+        <img id="kitchentiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/kitchen_tiles.jpg">
+        
+        <a-asset-item id="dishwasher-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.obj"></a-asset-item>
+		    <a-asset-item id="dishwasher-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherbody.mtl"></a-asset-item>
+        
+        <a-asset-item id="dishwasherdoor-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.obj"></a-asset-item>
+		    <a-asset-item id="dishwasherdoor-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/dishwasherdoor.mtl"></a-asset-item>
+        
+        <img id="stovetop-tex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/stovetop.png">
+        
+        <img id="kitchenrug" src="https://raw.githubusercontent.com/craftecode/hello-world/master/rug.jpg">
+        <img id="moonstarstexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/moon_stars_blue.png">
+        
+        <a-asset-item id="medal-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.obj"></a-asset-item>
+		    <a-asset-item id="medal-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/medal.mtl"></a-asset-item>
+        
+        <!-- Cactus -->
+        <a-asset-item id="cactusmtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cactus01.mtl"></a-asset-item>
+        <a-asset-item id="cactusobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/cactus01.obj"></a-asset-item>
+
+        <!-- Washer -->
+        <a-asset-item id="washermtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/washer.mtl"></a-asset-item>
+        <a-asset-item id="washerobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/washer.obj"></a-asset-item>
+        
+        <a-asset-item id="toiletmtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/toilet.mtl"></a-asset-item>
+        <a-asset-item id="toiletobj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/toilet.obj"></a-asset-item>
+
+        <a-asset-item id="lounge-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_textured.mtl"></a-asset-item>
+        <a-asset-item id="lounge-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/lounge_02.obj"></a-asset-item>
+        <!-- non-textured lounge is lounge_02.obj, mtl, textured is lounge_textured.obj, mtl -->
+        
+        <a-asset-item id="pillow01-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow01.obj"></a-asset-item>
+        <a-asset-item id="pillow02-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow02.obj"></a-asset-item>
+        <a-asset-item id="pillow03-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pillow03.obj"></a-asset-item>
+        
+        <a-asset-item id="pendantlampshade-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pendantlampshade.obj"></a-asset-item>
+        
+        <a-mixin id="lamptop" geometry="primitive: cylinder; radius:0.125; height:0.17" position="0 1.50 0" material="color:#FFFFFF;"></a-mixin>
+        <a-mixin id="lampstem" geometry="primitive: cylinder; radius:0.01; height:1.70" position="0.16 .85 0" material="color:#DDDDDD"></a-mixin>
+        <a-mixin id="lampbox" geometry="primitive: box;" scale="0.090 0.060 0.04" position="0.160 1.535 0" material="color:#FFFFFF"></a-mixin>
+        <a-mixin id="lampfoot" geometry="primitive: cylinder; radius:0.16; height: 0.01" position="0.16 .01 0" material="color:#FFFFFF"></a-mixin>
+        
+        <a-mixin id="heaterblade1mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="-0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
+        <a-mixin id="heatermidmix" geometry="primitive: box; width: 0.06; height: 0.4; depth: 2.6" position="0 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>      
+        <a-mixin id="heaterblade2mix" geometry="primitive: box; width: 0.015; height: 0.5; depth: 2.7" position="0.0395 0 0" material="color:#DDDDDD; metalness: 0.0"></a-mixin>
+        
+        <a-asset-item id="shower-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/shower.obj"></a-asset-item>
+        <a-asset-item id="shower-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/shower.mtl"></a-asset-item>
+        
+        <a-asset-item id="bathroomsink-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/bathroomsink.obj"></a-asset-item>
+        <a-asset-item id="bathroomsink-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/bathroomsink.mtl"></a-asset-item>
+        
+        <a-asset-item id="tablet-obj" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.obj"></a-asset-item>
+        <a-asset-item id="tablet-mtl" src="https://raw.githubusercontent.com/craftecode/hello-world/master/tablet.mtl"></a-asset-item>
+        
+        <!-- wood for sauna -->
+        <img id="texture_hardwood" src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/wood/hardwood2_diffuse.jpg">
+        <img id="woodplanks01" src="https://raw.githubusercontent.com/craftecode/hello-world/master/seamless_wood_planks_by_AGF81_deviantart.jpg">
+        
+        <!-- fabric texture for lounge -->
+        <img id="loungefabric" src="https://raw.githubusercontent.com/craftecode/hello-world/master/fabric_by_kvadrat.dk_seamless.jpg">
+        
+        <img id="posterfistbulb" src="https://raw.githubusercontent.com/craftecode/hello-world/master/poster_foe.jpg">
+        <!-- fist lightbulb poster is fistlightbulbposterpinterest_crop.jpg -->
+        
+        <img id="concrete" src="https://raw.githubusercontent.com/craftecode/hello-world/master/concrete_FLOOR_LIGHTER_by_ClintBellanger_OpenGameArt.jpg">
+        <img id="skybox" src="https://raw.githubusercontent.com/craftecode/hello-world/master/skybox11.png">
+        
+        <img id="tabletback" src="https://raw.githubusercontent.com/craftecode/hello-world/master/LittleDelph_smol.png">
+        
+        <img id="speakertex" src="https://raw.githubusercontent.com/craftecode/hello-world/master/Speaker_white-metal-mesh-with-round-holes-texture.jpg">
+        
+        <img id="coffeetablemarble" src="https://raw.githubusercontent.com/craftecode/hello-world/master/marble.jpeg">
+        
+        <!-- img id="radiator" src="https://raw.githubusercontent.com/craftecode/hello-world/master/radiator.png" -->
+        
+        <img id="sofatexture" src="https://raw.githubusercontent.com/craftecode/hello-world/master/sofa.jpg">
+        
+        <!-- img id="pinktiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/pinktiles.jpg" -->
+        <img id="bathroomtiles" src="https://raw.githubusercontent.com/craftecode/hello-world/master/bathroomtilesbluegreen.jpg">
+        
+        
+        <!-- 'mixin's which give properties to things later on when called by their id using mixin="idgoeshere"-->
+                
+        
+        <!-- checkpoints -->
+        <a-mixin id="checkpoint">
+        </a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5">
+        </a-mixin>
+
+        <!-- lights - ceiling -->
+        <a-mixin id="light" geometry="primitive: sphere; radius: 0.1" rotation="-90 0 0" material="color: #FFF; shader: flat" light="type: spot; color: #DDDDFF; penumbra: 0.05; distance: 2.85; intensity: .8; angle: 25;">
+        </a-mixin>
+     
+        
+        <a-mixin id="checkpointsphere" scale="0 0 0" geometry="primitive: sphere;radius:0.26" material="color:#ffb1b1;opacity:0.8"></a-mixin>
+         <!-- Improvement -->
+        <!-- point --><a-mixin id="ipoint" scale="0 0 0" geometry="primitive: cone; radiusBottom: 0; radiusTop: 0.1; height:0.18; segmentsRadial: 4; segmentsHeight: 1" material="color:#f9fc2f;opacity:0.8"></a-mixin>
+        <!-- card --><a-mixin id="icbox" scale="0 0 0" position="1.6 1.6 0" rotation="0 270 0" geometry="primitive:plane; width: 1.2; height: 0.7" material="color:#e8e8e8;shader:flat;opacity:1"></a-mixin>
+        <!-- text --><a-mixin id="icboxtext" position="0 .182 0" text="align: center; xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:31;color:black;"></a-mixin>
+        <!-- button --><a-mixin id="infocardbutton" position="0.0 -0.350 0.01" rotation="90 0 0" geometry="primitive: cone; height: 0.026; radiusTop: 0.15; radiusBottom: 0.155"  material="color: #8cd755;"> </a-mixin>
+        <!-- buttontext --><a-mixin id="infocardbuttontext" position=".0 -0.285 0.027" scale="1 1 1" text="align: center; value:Take\naction!;xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:30;color:#000000"></a-mixin>
+        <!-- OLD ICBOX COLOUR: d3d3d3 -->
+        
+        
+      </a-assets>
+<!-- CLOSE Asset management system. -->
+          
+  
+      <!-- camera/player -->
+      <!-- Player -->
+      <!-- "The cursor component by default provides the ability to “click” on entities by staring or gazing at them on mobile" - https://aframe.io/docs/0.8.0/guides/building-a-basic-scene.html#advanced-details - It provides info on "mousedown, mouseup, mouseenter, mouseleave, and click events"-->
+	    <!-- https://blog.omgmog.net/gdd-aframe-guide/basic/10-interaction.html 
+        1. timeout: how long something should be gazed at before a “click” is emitted. 
+        2. use the fusing and click events to trigger animations to indicate what the cursor is doing
+		    3. my working version didn't include "fuse: true; maxDistance: 30; timeout: 500" after the cursor entity, this may be due to using the a-frame extras thing.
+		  --> 
+      <a-entity rotation="0 0 0"> <!-- If you change this position="-2.2 0 0.0" also change the position of the welcome message container  -->
+	    <a-entity id="cameraPosition"
+				  camera="userHeight: 1.6"
+				  rotation="0 0 0"
+          look-controls
+          wasd-controls>
+
+		  <a-entity id="cursor" raycaster="objects: .clickable" cursor="fuse: true; maxDistance: 30; fuseTimeout: 1000"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: #FFF; shader: flat;">
+				  
+				  <a-animation begin="click" easing="ease-in" attribute="scale"
+				  fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150">
+				  </a-animation>
+        
+        <!-- a-animation begin="fusing" easing="ease-in" attribute="geometry.thetaLength" fill="backwards" from="0" to="-360" dur="1000"></a-animation -->
+				  
+				  <a-animation begin="fusing" easing="ease-in" attribute="scale"
+				  fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1000">
+				  </a-animation>
+      </a-entity>
+		<!-- Note that Sebastian Diaz's feedback cursor doesn't include a timeout value for the cursor but does activate things after about 3 seconds https://codepen.io/Absulit/pen/WEKjqm?editors=1000 -->
+
+    </a-entity>
+    </a-entity>
+<!-- END OF THE PLAYER/CAMERA, beginning of other stuff -->
+
+    <a-entity id="laser" 
+              laser-controls="hand: right" 
+              raycaster="showLine:true; objects: .clickable;" 
+              line="opacity:0.0;"
+              >
+        <a-entity rotation="-105 0 0" position="0 0.1 -0.1" class="weapon dof6" static-body="shape:sphere; sphereRadius: 0.3;">
+          <a-entity id="tablet" obj-model="obj: #tablet-obj;mtl: #tablet-mtl" visible="true" scale="1.1 1.1 1.1" position="-0.1 0 0" rotation="-45 128 -124" material="color:#fff2cc">
+            <!-- a-entity id="em_screen3" geometry="primitive: plane; width: 0.150; height: 0.178;" position ="0 0.044 0.032" rotation="0 180 0" material="color:#e5ddd7;opacity:1"></a-entity -->
+            <a-entity id="em_back" geometry="primitive: plane; width: 0.075; height: 0.0869;" position ="0 0.023 0.043" rotation="0 0 180" material="src: #tabletback; transparent:true; opacity:0.9;alpha-test:0.5"></a-entity>
+            <!-- a-entity id="em_bartopoutline3" position="0 -0.066 0.032" geometry="primitive: plane; width: 0.150; height: 0.042;" rotation="0 180 0" material="color:#5b534d;opacity:1"></a-entity -->
+                <a-entity id="em_barbg3" geometry="primitive: plane; width: 0.13; height: 0.022" position="0 -0.068 0.031" rotation="0 180 0" material="color:#e5ddd7;opacity:1">
+                      <a-entity id="energybar3" position="0 0 .001" scale="1 1 1" rotation="0 0 0" material="color:#FE7A16;opacity:1" geometry="primitive:box;width: 0.13; height: 0.022;depth:0.002"></a-entity>
+                      <!-- bar of Energy monitor tablet -->
+                      <!-- for the bar to progress the x values of both the position and scale need to change, The scale to embiggen the bar and the position to move it along. -->
+                      <!-- full is position="0 0 0" scale="1 1 1", 50% is position=".25 0 0" scale=".5 1 1", 10% is position=".45 0 0" scale=".1 1 1" -->
+                      <!-- to increase the energy bar increase the x scale by the percentage and decrease the x position from 50 by half the percentage -->
+                </a-entity> 
+            <a-entity id="graph_livingroom" position="-0.035 0.038 0.031" geometry="primitive: plane; width: 0.020; height: 0.058;" rotation="0 180 0" material="color:#60c89c;opacity:1"></a-entity>
+            <a-entity id="graph_kitchen" position="0 0.03 0.031" geometry="primitive: plane; width: 0.020; height: 0.070;" rotation="0 180 0" material="color:#8ae05d;opacity:1"></a-entity>
+            <a-entity id="graph_bathroom" position="0.035 0.038 0.031" geometry="primitive: plane; width: 0.020; height: 0.050;" rotation="0 180 0" material="color:#77d4e5;opacity:1"></a-entity>
+            <a-entity text="value:Living room; align: center; width: 0.15; color: black" position="-0.035 0.07 0.032" rotation="180 0 0"></a-entity>
+            <a-entity text="value:Kitchen; align: center; width: 0.15; color: black" position="0 0.07 0.032" rotation="180 0 0"></a-entity>
+            <a-entity text="value:Bathroom; align: center; width: 0.15; color: black" position="0.035 0.07 0.032" rotation="180 0 0"></a-entity>
+            
+            <a-entity id="blank" scale="1 1 1" geometry="primitive: plane; width: 0.150; height: 0.220;" position ="0 0.023 0.030" rotation="0 180 0" material="color:#e5ddd7"></a-entity>
+            <a-entity id="orange" scale="0 0 0" geometry="primitive: plane; width: 0.150; height: 0.220;" position ="0 0.023 0.028" rotation="0 180 0" material="color:#ff7817;opacity:0.5">
+              <a-entity id="orange2" geometry="primitive: plane; width: 0.130; height: 0.156;" position ="0 0 0.002" rotation="0 0 0" material="color:#ff7817;opacity:0.7"></a-entity>
+              <a-entity id="orange3" geometry="primitive: plane; width: 0.100; height: 0.110;" position ="0 0 0.004" rotation="0 0 0" material="color:#ff7817;opacity:1"></a-entity>
+            </a-entity>
+            <!-- a-entity visible="false" text="value::); align: center; width: 1.7; color: black" position="0 0.07 0.026" rotation="180 0 0"></a-entity -->
+            <a-entity id="tablettext01" text="value:Focus on the pink\nspheres to move.; align: center; width: 0.3; color: black" position="0 -0.030 0.026" rotation="180 0 0"></a-entity>
+            <a-entity id="tablettext02" visible="false" text="value:Focus on the\nyellow triangles\nand save energy!; align: center; width: 0.3; color: black" position="0 -0.030 0.026" rotation="180 0 0"></a-entity>
+            <a-entity id="tablettext03" visible="false" text="value:The Energy Monitor in your hand\nshows your progress towards your\nsustainable home.; align: center; width: 0.3; color: black" position="0 -0.030 0.026" rotation="180 0 0"></a-entity>
+            <a-entity id="tablettext04" visible="false" text="value:This is your\nsustainable home\nin progress.; align: center; width: 0.3; color: black" position="0 -0.030 0.026" rotation="180 0 0"></a-entity>
+          </a-entity>
+        </a-entity>
+    </a-entity>  
+  
+  
+<a-sky src="#skybox"></a-sky>
+<a-light id="ambientLight" type="ambient" color="#fff" intensity=".7"></a-light>
+  
+  
+  
+  
+  
+  
+<!-- THIS IS THE START OF THE EVERYTHING ELSE SECTION -->  
+  
+  <!-- THIS IS THE START OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE START OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE START OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE START OF THE EVERYTHING ELSE SECTION -->
+  
+  
+  
+  
+  
+  
+<a-entity id="everythingelse" position="0 0 0">
+  <a-animation easing="linear" begin="everythingmove" attribute="position" from="0 0 0" to="-2.48 0 -2.2" dur="2000"></a-animation>
+  <a-animation easing="linear" begin="everythingmove2" attribute="position" from="-2.48 0 -2.2" to="-1.55 0 0.7" dur="2000"></a-animation>
+  <a-animation easing="linear" begin="everythingmove3" attribute="position" from="-1.55 0 0.7" to="1.26 0 -0.84" dur="2000"></a-animation> 
+  
+<!-- THE VIEW OUTSIDE -->
+  
+  <a-entity id="citypicture" 
+            position="12 0 0" 
+            geometry="primitive: cylinder; radius: 10; height: 20; segmentsRadial: 8; segmentsHeight: 2; openEnded: true; thetaStart: -30; thetaLength: 200" 
+            material="src:#city2;side: double;shader:flat">
+            </a-entity>
+  
+<!-- LIGHTS - note that only x rotation appears to affect spot light direction -->  
+
+<!-- a-entity light="type: directional; color: #FFF; intensity: 0.5" position="-1 1 0"></a-entity -->
+<!-- a-entity light="type: directional; color: #FFF; intensity: 0.5" position="1 1 0"></a-entity --> 
+ 
+  <!-- various objects -->
+  
+  
+  
+<a-entity id="home" scale="1 1 1" obj-model="obj: #sculpt-obj; mtl: #sculpt-mtl" material="color:#DDDDDD;" position="2.2 1 1"></a-entity>
+<a-entity id="floortextured" geometry="primitive: plane" position="0.7 0.01 1" rotation="-90 0 0" scale="12 14 1" material="src:#concrete; repeat: 14 12"></a-entity>
+<a-entity id="doorloungeroom" scale="2.01356 2.40393 0.05" geometry="" position="3.98749 1.03341 -0.24576" material="color:#A8ccd7;opacity:0.2" rotation="0 90 0"></a-entity>
+<a-entity id="windowloungeroom" scale="2.88262 1.26369 0.05" geometry="" position="4.02 1.5 2.29983" material="color:#A8ccd7;opacity:0.2" rotation="0 90 0"></a-entity>
+ 
+  
+<a-entity id="loungeroomstuff" position="2.2 0 1">
+  
+  <a-entity id="ceilinglight" mixin="light" position="-0.2 2.4 -2.1"></a-entity>
+  <a-entity id="ceilinglampshade" position="-0.2 2.45 -2.1" scale="0.3 0.15 0.3" geometry="primitive:cone" material="color:#FFFFFF;"></a-entity>
+  
+  <a-entity id="lightcompensator" 
+            rotation="0 0 0" 
+            material="color: #FFF; shader: flat" 
+            light="type: point; color: #DDDDFF; distance: 12; intensity: .5; angle: 60;"
+            position="-0.2 3.9 -2.1">
+        </a-entity>
+  
+  <a-entity id="table" obj-model="obj: #table-obj; mtl: #table-mtl" position="0.930 0.05 -0.373" rotation="0 20 0"></a-entity>
+  <a-entity id="chairs" obj-model="obj: #chairs-obj; mtl: #chairs-mtl" position="0.930 0.017 -0.373" rotation="0 20 0"></a-entity>
+  
+  <a-entity position="1.013 1.669 -0.373">
+        <a-entity id="pendantlampshade" obj-model="obj: #pendantlampshade-obj;" visible="true" scale="0.8 0.8 0.8" position="0 0 0" material="color:#ffffff"></a-entity>
+  <a-entity id="pendantlampshadecord" geometry="primitive: cylinder; radius:0.005; height:1" position="0 0.294 0" rotation="0 90 0" material="color:#FFFFFF"></a-entity>
+  </a-entity>
+      
+  <a-entity id="lounge" obj-model="obj: #lounge-obj;" scale="1 1 1" position="-1.239 0 1.6" rotation="0 25 0" material="src:#sofatexture;">
+            <a-entity id="pillowpink" obj-model="obj: #pillow01-obj;" scale="1 1 1" position="0.406 0.636 -0.017" rotation="44.394 -43.540 9.342" material="color:#f0d5d5;"></a-entity>
+            <a-entity id="pillowgrey" obj-model="obj: #pillow02-obj;" scale="1 1 1" position="-0.369 0.664 -0.111" rotation="57.998 -2.446 -2.468" material="color:#d8d2d0;"></a-entity>
+            <a-entity id="pilloworange" obj-model="obj: #pillow03-obj;" scale="1 1 1" position="-0.126 0.546 0.084" rotation="0 30.548 0" material="color:#f6b55c;"></a-entity>
+  </a-entity>
+  
+  <!-- tv pieces -->
+  <a-entity id="tvpieces" position="0 0.2 0">
+    <a-entity id="tvbench" obj-model="obj: #tvbench-obj;" visible="true" scale="1 1 1" position="-0.438  0.01 3.597" material="src:#tvbenchwood;"></a-entity>
+    <!-- OBJ is offset :( --><a-entity id="tv" obj-model="obj: #tv-obj;" scale="1 1 1" position="0 1 0" material="color:#DDDDDD; metalness: 0.4"></a-entity>
+    <a-entity id="tvscreen" geometry="primitive: box;" scale="1.41 0.80 0.1" position="-0.443 1.072 3.616" material="color:#000000"></a-entity>
+    <a-entity id="tvscreenimage" visible="false" geometry="primitive: box;" scale="1.41 0.80 0.1" position="-0.443 1.072 3.616" material="src:#tvimage"></a-entity>
+  </a-entity>
+  
+  <!-- heater -->
+  <a-entity id="heater" position="1.654 0.483 1.283">
+      <!-- a-entity id="radiatortexture" geometry="primitive: plane; width:2.7; height: 0.5;" position="-0.009 0 0" rotation="0 -90 0" material="src: #radiator; transparent:true; opacity:0.9;alpha-test:0.5"></a-entity -->
+    <a-entity id="heaterblade1" mixin="heaterblade1mix"></a-entity>
+    <a-entity id="heatermid" mixin="heatermidmix"></a-entity>      
+    <a-entity id="heaterblade2" mixin="heaterblade2mix"></a-entity>
+  </a-entity>
+    
+  
+  <a-entity id="posterfistbulb1" geometry="primitive: plane" scale="0.715 1 1" material="src: #posterfistbulb" position="-3.191 1.407 0.891" rotation="0 90 0"></a-entity>
+
+  <!-- loungeroom lamp -->
+  <a-entity id="loungeroomlamplight" light="type: spot; angle: 20; distance: 3; intensity: 0.5; color: #f6cd8b;" rotation="-90 0 0" position="0.88 1.5 3.2"></a-entity>
+  <a-entity id="loungeroomlamp" position="0.880 0.000 3.2" rotation="0 240 0">
+    <a-entity id="llamp_top" mixin="lamptop"></a-entity>
+    <a-entity id="llamp_stem" mixin="lampstem"></a-entity>
+    <a-entity id="llamp_box" mixin="lampbox"></a-entity>
+    <a-entity id="llamp4_foot" mixin="lampfoot"></a-entity>
+  </a-entity>  
+  
+  <!-- loungeroom-->
+  <!-- a-plane id="tvwall" scale="3.4 2.5 1" position="-3.200 1.250 2.001" rotation="0 90 0" material="color:#8fc4c1" visible="true"></a-plane -->
+  <!-- a-plane id="posterwall" scale="3.73 2.5 1" position="-0.150 1.240 3.610" rotation="0 180 0" material="color:#a9bbb3" visible="true"></a-plane -->
+  
+  <!-- coffee table -->
+  <a-entity id="coffeetable" geometry="primitive: cylinder; radius:0.5; height:0.01" position="-0.391 0.362 2.596" material="src:#coffeetablemarble; color:#DDDDDD">
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.35" position="0.47 -0.171 0" material="color:#f0e088; metalness: 0.3"></a-entity>
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.35" position="-0.47 -0.171 0" material="color:#f0e088; metalness: 0.3"></a-entity>
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.35" position="0 -0.171 0.47" material="color:#f0e088; metalness: 0.3"></a-entity>
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.35" position="0 -0.171 -0.47" material="color:#f0e088; metalness: 0.3"></a-entity>
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.94" rotation="0 0 90" position="0 -0.35 0" material="color:#f0e088; metalness: 0.3"></a-entity>
+    <a-entity geometry="primitive: cylinder; radius:0.01; height:0.94" rotation="90 0 0" position="0 -0.35 0" material="color:#f0e088; metalness: 0.3"></a-entity>
+    
+    
+    
+    <a-entity id="speaker" geometry="primitive: cylinder; radius:0.0475; height:0.22" position="0.229 0.119 0.223" material="src:#speakertex; color: #DDDDDD; metalness: 0.3">
+      <a-entity id="speakerbottom" geometry="primitive: cylinder; radius:0.0475; height:0.22" material="src:#speakertex; color: #DDDDDD; metalness: 0.3"></a-entity>
+            <a-entity id="speakerlight" geometry="primitive: cylinder; radius:0.0460; height:0.01" position="0 0.108 0" material="shader:flat;color:#00FEFF;opacity:1"></a-entity>
+            <a-entity id="speakertop" geometry="primitive:cylinder; radius:0.036; height:0.02" position="0 0.108 0" material="color: #DDDDDD; metalness: 0.3"></a-entity>
+    </a-entity>
+  </a-entity>
+      
+
+  
+
+      
+<!-- heat particles test -->
+  <a-entity id="heatparticles1" position="1.574 1.040 1.20" 
+            scale="0.01 1.4 2.0" 
+            rotation="0 180 180"
+            visible="false"
+            particle-system="preset:dust;particleCount:400;velocityValue:0.01 0.05 0;maxParticleCount:400;rotationAngleSpread:1;size:0.15;positionSpread:1 1 1 NaN;color:#FF0000;duration:NaN;maxAge:5;rotationAngle:3.14;accelerationValue:0 0 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;texture:https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png">
+  </a-entity>
+  <a-entity id="heatparticles2" position="1.574 1.040 1.20" 
+            scale="0.01 1.4 2.0" 
+            rotation="0 180 180"
+            visible="false"
+            particle-system="preset:dust;particleCount:30;velocityValue:0.01 0.05 0;maxParticleCount:30;rotationAngleSpread:1;size:0.15;positionSpread:1 1 1 NaN;color:#FF0000;duration:NaN;maxAge:5;rotationAngle:3.14;accelerationValue:0 0 0;accelerationSpread:0 0 0;velocitySpread:0.1 0.1 0.02;texture:https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png">
+  </a-entity>
+  
+  
+</a-entity>
+      
+
+  
+  
+  
+  
+  <a-entity id="kitchenstuff" position="2.2 0 1">
+    <a-entity id="stovetop" geometry="primitive:plane;width:0.60;height:0.60" rotation="-90 0 0" position="-2.215 0.797 -3.5614" material="src:#stovetop-tex"></a-entity>
+    <a-entity id="kitchencarpet1" geometry="primitive: box; width: 3.0; depth: 1; height: 0.01" material="src: #kitchenrug;repeat: 3 1" position="-0.367 0.032 -2.702"></a-entity>
+    <a-entity id="sinkwaterstream" visible="false" geometry="primitive: cylinder; radius:0.01; height: 0.410;segmentsRadial: 3; segmentsHeight: 1" rotation="0 0 0" position="0.001 0.821 -3.668" material="color:#3333FF;opacity:0.15">
+       <a-animation attribute="rotation" dur="10000" fill="forwards" from="0 1 0" to="0 360 0" repeat="indefinite" easing="ease"></a-animation>
+    </a-entity>
+    <a-entity id="sinkwaterlevel" visible="false" geometry="primitive: box; width:0.48; height: 0.1; depth:0.48" rotation="0 0 0" position="0.15 0.67 -3.554" material="color:#3333FF;opacity:0.15">
+       <a-animation attribute="rotation" dur="2000" fill="forwards" from="0 0 0" to="10 0 0" repeat="indefinite" easing="ease" direction="alternate"></a-animation>
+       <a-animation begin="drainwater" attribute="position" dur="3000" fill="forwards" from="0.15 0.67 -3.554" to="0.15 0.55 -3.554" easing="ease" repeat="0"></a-animation>
+    </a-entity>
+    <a-entity id="dishwasher" scale="1 1 1" obj-model="obj: #dishwasher-obj; mtl: #dishwasher-mtl" material="color:#DDDDDD;" position="0 1 0"></a-entity>
+    <a-entity id="dishwasherdoor" class="clickable" scale="1 1 1" obj-model="obj: #dishwasherdoor-obj; mtl: #dishwasherdoor-mtl" material="color:#DDDDDD;" position="0.8 0.064 -3.275">
+      <a-animation begin="move" attribute="rotation" from="0 0 0" to="15 0 0" dur="1000"></a-animation>
+    </a-entity>
+    <a-entity id="moonstars01" visible="false" geometry="primitive: plane;width:0.3; height:0.3" scale="1 1 1" material="src:#moonstarstexture;alphaTest: 0.5;" rotation="0 -45 0" position="0.805 0.600 -3.161">
+      <a-animation attribute="rotation" dur="500" fill="forwards" from="0 -45 -5" to="0 -45 5" repeat="indefinite" easing="linear" direction="alternate"></a-animation>
+      <a-animation attribute="scale" begin="move" dur="1000" fill="forwards" from="0 0 0" to="1 1 1" repeat="0" easing="linear"></a-animation>
+      <a-animation attribute="position" begin="move" dur="5000" fill="forwards" from="0.805 0.600 -3.161" to="0.805 2.9 -3.161" repeat="0" easing="linear"></a-animation>
+    </a-entity>
+    <a-entity id="fridge-medal" visible="false" scale="3 3 3" obj-model="obj: #medal-obj; mtl: #medal-mtl" material="color:#DDDDDD;" rotation="74 -90 -90" position="1.445 1.149 -3.236"></a-entity>
+    <a-entity id="kitchentiledwall" geometry="primitive: plane;width:5; height:2.5"  material="src: #kitchentiles;repeat: 5 2.5" rotation="0 0 0" position="-0.766 1.173 -3.862"></a-entity>
+    
+  </a-entity>
+  
+  
+  
+  
+  
+  <a-entity id="bathroomstuff" position="2.2 0 1">
+ 
+    <!-- Bathroom -->
+  <a-entity id="saunalightshade" material="color: #DDDDDD" geometry="primitive: cone; radiusBottom: 0.1; radiusTop: 0.05; height: 0.1" rotation="0 0 0" position="-4.5 2.3 2.1">
+      <a-entity id="saunalight" light="type: spot; penumbra: 0.05; angle: 30; distance: 3" rotation="-90 0 0" position="0 0 0"></a-entity>
+  </a-entity>
+    <a-entity id="saunalight2" light="type:spot;angle:30;distance:2.89;decay:1.58;intensity:1.49;penumbra:1" rotation="-25.5 -44.3 -110.4" position="-4.5 2.3 2.1"></a-entity>
+  
+  <a-entity id="washer" obj-model="obj: #washerobj; mtl: #washermtl" scale="1 1 1" position="-5.622  0.429 -1.092" rotation="0 90 0"></a-entity>
+  <a-entity id="washermiddle" geometry="primitive: circle; radius: 0.2" material="color:black" position="-5.340 0.496 -1.092" rotation="0 90 0"></a-entity>
+  <a-entity id="toilet" obj-model="obj: #toiletobj; mtl: #toiletmtl" scale="1 1 1" position="-5.693 0.063 0.320" rotation="0 0 0"></a-entity>
+  <a-entity id="shower" obj-model="obj: #shower-obj; mtl: #shower-mtl" scale="1 1 1" position="-5.917 1.492 0.996" rotation="0 90 0"></a-entity>
+  <a-entity id="bathroomsink" obj-model="obj: #bathroomsink-obj; mtl: #bathroomsink-mtl" scale="1 1 1" position="-5.693 0.884 -0.375" rotation="0 90 0"></a-entity>
+  <a-entity id="floorheatertablet" geometry="primitive: cone;  radiusBottom: 0.11; radiusTop: 0.1; height:0.01;  segmentsRadial: 4; segmentsHeight: 1;" 
+            scale="1.260 1 1.260" 
+            position="-5.918 1.425 -0.192" 
+            rotation="45 0 -90"
+            material="color:white">
+    </a-entity>
+  <a-entity id="floorheatertabletscreen" geometry="primitive: plane; width: 0.16; height: 0.11;" material="color:#52bcec" position="-5.912 1.444 -0.192" rotation="0 90 0">
+    <a-entity id="floorheatertablettext" position="0 0.034 0.001" text="align: center; value:21 C;xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:30;color:#000000"></a-entity>
+  </a-entity>
+    
+    
+  <!-- bathroom wall -->
+  <a-entity id="bathroomwall" geometry="primitive: plane; width: 3.45; height: 2.5;" scale="1 1 1" position="-5.925 1.250 -0.157" rotation="0 90 0" material="src:#bathroomtiles; repeat: 3.45 2.5" visible="true"></a-entity>
+  
+  <!-- sauna wall -->
+  <a-entity visible="true">    
+  <a-entity id="saunawall1" geometry="primitive: plane; width: 2.5; height: 2.5" scale="1 1 1" material="src: #woodplanks01;repeat: 1.25 1.25" position="-4.660 1.250 3.404" rotation="0 180 0"></a-entity>
+  <a-entity id="saunawall_seat" geometry="primitive: box; width: 1.7; height: 0.1; depth: 1" material="src: #woodplanks01;repeat: 0.85 0.5" position="-5.084 0.500 2.554" rotation="0 0 0"></a-entity>
+  <a-entity id="saunawall_seathigh" geometry="primitive: box; width: 2.5; height: 0.1; depth: 1" material="src: #woodplanks01;repeat: 1.25 0.5" position="-4.646 1.247 3" rotation="0 0 0"></a-entity>
+    <a-entity id="saunawall_seathigh2" geometry="primitive: box; width: 0.87; height: 0.1; depth: 1" material="src: #woodplanks01;repeat: 0.435 0.5" position="-5.497 1.247 2.068" rotation="0 90 0"></a-entity>
+    <a-entity id="saunawall_heater" geometry="primitive: box; width: 0.6; height: 0.8; depth: 0.6" material="src: #woodplanks01;repeat: 0.3 0.4" position="-3.755 0.397 2.418" rotation="0 0 0"></a-entity>
+    <a-entity id="saunawall_heatertop" geometry="primitive: plane; width: 0.45; height: 0.45" material="color:black" position="-3.755 0.799 2.418" rotation="-90 0 0"></a-entity>
+    <a-entity id="saunawall_fridgeward" geometry="primitive: plane; width: 2; height: 2.5;" material="src: #woodplanks01; repeat: 1 1.25" position="-3.400  1.250 2.629" rotation="0 270 0"></a-entity>
+  <a-entity id="saunawall_antifridgeward" geometry="primitive: plane; width: 2; height: 2.5;" material="src: #woodplanks01; repeat: 1 1.25" position="-5.925 1.250 2.633" rotation="0 90 0"></a-entity>
+  <a-entity id="saunawall_ceiling" geometry="primitive: plane;width:2.5;height:2;" material="src: #woodplanks01; repeat: 1 1.25" position="-4.665 2.414 2.633" rotation="90 180 0"></a-entity>
+  </a-entity>
+    
+  <!-- sauna glass door test -->
+  <a-entity position="-3.824 1.249 1.6">
+    <a-entity id="saunadoor" scale="0.86 2.5 0.05" geometry="primitive: box" material="color:#3333FF;opacity:0.15"></a-entity>
+    <a-entity id="saunadoorhandle" geometry="primitive: box" scale="0.25 0.13 0.05" position="0.27 0 -0.1" material="color:#997b57"></a-entity>
+    <a-entity id="saunadoorhinge1a" geometry="primitive: box; width: 0.13; height: 0.08; depth: 0.04" position="-0.368 0.7 -0.05" material="color:#bcbaba"></a-entity>
+    <a-entity id="saunadoorhinge2a" geometry="primitive: box; width: 0.13; height: 0.08; depth: 0.04" position="-0.368 -0.7 -0.05" material="color:#bcbaba"></a-entity>
+    <a-entity id="saunadoorhinge1b" geometry="primitive: box; width: 0.13; height: 0.08; depth: 0.04" position="-0.504 0.7 -0.05" material="color:#bcbaba"></a-entity>
+    <a-entity id="saunadoorhinge2b" geometry="primitive: box; width: 0.13; height: 0.08; depth: 0.04" position="-0.504 -0.7 -0.05" material="color:#bcbaba"></a-entity>
+  </a-entity>
+  <a-entity id="saunawall" scale="1.68 2.5 0.05" position="-5.102 1.249 1.6" geometry="primitive: box" material="color:#3333FF;opacity:0.15"></a-entity>
+      
+  </a-entity>
+
+  
+  
+  
+  
+  <a-entity id="infopointcontainer" position="2.2 0 1">
+  <!-- INFO POINT 0102 UNUSED DEVICES -->
+  <a-entity id="ip0102" mixin="ipoint" class="clickable ipoint"
+                  position="-0.162 0.9 2.823"
+                  event-set__open="_event: click; _target: #ic0102_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+  </a-entity>
+  
+  <a-entity id="ip0103" mixin="ipoint" class="clickable ipoint"
+                  position="1.668 1.045 2.535"
+                  event-set__open="_event: click; _target: #ic0103_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+  </a-entity>
+  
+  <a-entity id="ip0201" mixin="ipoint" class="clickable ipoint"
+            position="0.749 1.1 -3.404"
+            event-set__open="_event: click; _target: #ic0201_box; scale: 1 1 1"
+            event-set__hideme="_event: click; scale: 0 0 0"
+            >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+  </a-entity>
+  
+  <a-entity id="ip0202" mixin="ipoint" class="clickable ipoint"
+            position="0.987 1.644 -3.196"
+            event-set__open="_event: click; _target: #ic0202_box; scale: 1 1 1"
+            event-set__hideme="_event: click; scale: 0 0 0"
+            >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+  </a-entity>
+     
+  <a-entity id="ip0203" mixin="ipoint" class="clickable ipoint"
+            position="0.165 1.1 -3.541"
+            event-set__open="_event: click; _target: #ic0203_box; scale: 1 1 1"
+            event-set__hideme="_event: click; scale: 0 0 0"
+            >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+  </a-entity>
+    
+    <!-- floor heating -->
+    <a-entity id="ip0301" mixin="ipoint" class="clickable ipoint" position="-5.823 1.800 -0.192"
+                  event-set__open="_event: click; _target: #ic0301_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  event-set__showic0301="_event: click; _target: #ic0301_box; scale: 1 1 1"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-entity>
+    
+    <!-- sauna -->
+    <a-entity id="ip0302" mixin="ipoint" class="clickable ipoint" position="-4.278 1.530 0.954"
+                  event-set__open="_event: click; _target: #ic0302_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-entity>
+    
+    <!-- shower -->
+    <a-entity id="ip0303" mixin="ipoint" class="clickable ipoint" position="-5.736 1.659 1.075" 
+                  event-set__open="_event: click; _target: #ic0303_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-entity>
+
+    <!-- cold wash -->
+    <a-entity id="ip0304" mixin="ipoint" class="clickable ipoint" position="-5.622  1.1 -1.092"
+                  event-set__open="_event: click; _target: #ic0304_box; scale: 1 1 1"
+                  event-set__hideme="_event: click; scale: 0 0 0"
+                  >
+    <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-entity>
+    
+</a-entity>  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+<!-- Info cards -->
+  <a-entity position="2.2 0 1">
+      
+		<!-- Starting position -->
+		<a-entity position="-2.2 0.05 -1.0" scale="1 1 1">
+      
+      <!-- rotator to put the welcome message in the right location relative to the start point -->	
+      <a-entity rotation="0 30 0" scale="1 1 1">
+        <a-entity id="ic_greeting" class="card" mixin="icbox" scale="1 1 1" position="1.4 1.5 0" rotation="0 270 0">
+          <a-entity id="text0000" mixin="icboxtext" text="value:Welcome to your virtual home!\nFocus on the pink spheres to move.;"></a-entity>
+          <a-entity id="text0001" position="0 -0.114 0" text="align: center; value:designed by Delphine and Michael.;width: 0.66;xOffset:0.0;yOffset:0.0;baseline:top;wrapCount:30;color:#000000"></a-entity>
+          <a-entity id="button_greeting" class="clickable ic_button" mixin="infocardbutton" material="color:#8cd755"
+                    event-set__close="_event: click; _target: #ic_greeting; scale: 0 0 0"
+                    event-set__chk01="_event: click; _target: #chk01; scale: 1 1 1"
+                    >
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity> 
+          <!-- ACT! button text -->
+			    <a-entity mixin="infocardbuttontext">
+          </a-entity> 
+        </a-entity>
+      </a-entity>
+    </a-entity>
+      
+
+
+    
+    
+    <!-- chk01 - TV checkpoint -->
+    <a-entity id="chk01pos" position="0.28 0.05 1.2"> 
+		<a-sphere id="chk01" class="clickable" position="0 1.2 0" checkpoint="offset: 0 0.4 0" mixin="checkpointsphere" 
+              event-set__hideme="_event: click; _target: #chk01; scale: 0 0 0"
+              event-set__ip0102="_event: click; _target: #ip0102; scale: 1 1 1;"
+              event-set__ip0103="_event: click; _target: #ip0103; scale: 1 1 1;"
+              event-set__particles2="_event: click; _target: #heatparticles1; visible: true"
+              event-set__tvon="_event: click; _target: #tvscreenimage; visible: true"
+              ></a-sphere>      
+      
+      <!-- 0102: turn off unused devices -->
+      <a-entity id="ic0102_pos" rotation="0 -112.32 0" scale="1 1 1">
+
+        <a-entity id="ic0102_box_rotationparent" rotation="0 20 0">
+        <a-entity id="ic0102_box" mixin="icbox"  class="card">
+          <a-entity id="ic0102_text" mixin="icboxtext" text="value:The cost of a single light may seem\nsmall but it really adds up!;">
+          </a-entity>
+          <a-entity id="ic0102_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__close="_event: click; _target: #ic0102_box; scale: 0 0 0"
+                    event-set__chk02="_event: click; _target: #chk02; scale: 1 1 1"
+                    event-set__addpos="_event: click; _target: #energybar; position: 0.36 0 0"
+                    event-set__addscale="_event: click; _target: #energybar; scale: .28 1 1"
+                    event-set__lightsoff="_event: click; _target: #loungeroomlamplight; position: 0 -5 0"
+                    event-set__tv-off="_event: click; _target: #tvscreen; visible:true"
+                    event-set__tv-off2="_event: click; _target: #tvscreenimage; visible:false"
+                    event-set__speaker-off="_event: click; _target: #speakerlight; material.color:#DDDDDD"
+                    >
+            <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0102_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <!-- lower temperature-->
+      <a-entity id="ic0103_pos" rotation="0 -51 0" scale="1 1 1">
+        <a-entity id="ic0103_box" mixin="icbox" class="card">
+          <a-entity id="ic0103_text" mixin="icboxtext" text="value:68% of your energy consumption\ncomes from heating your home!\n\nTry reducing the air temperature\nto the minimum comfortable level.;">
+          </a-entity>
+          <a-entity id="ic0103_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__hideme="_event: click; _target: #ic0103_box; scale: 0 0 0"
+                    event-set__chk02="_event: click; _target: #chk02; scale: 1 1 1"
+                    event-set__particles1="_event: click; _target: #heatparticles1; visible: false"
+                    event-set__particles2="_event: click; _target: #heatparticles2; visible: true"
+                    event-set__addpos="_event: click; _target: #energybar; position: 0.24 0 0"
+                    event-set__addscale="_event: click; _target: #energybar; scale: .52 1 1"
+                    >
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0103_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+    </a-entity>
+    <!-- chk01 end -->
+      
+      
+		<!-- chk02 - Kitchen checkpoint -->
+    <a-entity id="chk02pos" position="-0.65 0.05 -1.7" scale="1 1 1"> 
+      
+      <a-sphere id="chk02" class="clickable" position="0 1.2 0" checkpoint="offset: 0 0.4 0" mixin="checkpointsphere"
+                event-set__hideme="_event: click; _target: #chk02; scale: 0 0 0"
+                event-set__ip0201="_event: click; _target: #ip0201; scale: 1 1 1"
+                event-set__ip0202="_event: click; _target: #ip0202; scale: 1 1 1"
+                event-set__ip0203="_event: click; _target: #ip0203; scale: 1 1 1"
+                event-set__chk03="_event: click; _target: #chk03; scale: 1 1 1"
+                event-set__sinkwaterstream="_event: click; _target: #sinkwaterstream; visible:true"
+                event-set__sinkwaterlevel="_event: click; _target: #sinkwaterlevel; visible:true"
+                >
+      </a-sphere>
+      
+      <!-- dishwasher -->
+      <a-entity id="ic0201_pos" rotation="0 41.5 0">
+        
+        <a-entity id="ic0201_box" mixin="icbox" class="card">
+          <a-entity id="ic0201_text" mixin="icboxtext" text="value:Program your dishwasher\nto run at night!\n\nReduce the need for dirty energy\n at peak usage times.;">
+          </a-entity>
+          <a-entity id="ic0201_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__close="_event: click; _target: #ic0201_box; scale: 0 0 0"
+                    event-set__moonvisible="_event: click; _target: #moonstars01; visible: true"
+                    >
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0201_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <!-- fridge -->
+      <a-entity id="ic0202_pos" rotation="0 33 0">
+        <a-entity id="ic0202_box" mixin="icbox" class="card">
+          <a-entity id="ic0202_text" mixin="icboxtext" text="value:Choose a fridge based on\n its energy efficiency!\n\nA fridge rated A+++ has operating\ncosts 40% lower than an A+ model.;">
+          </a-entity>
+          <a-entity id="ic0202_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__hideme="_event: click; _target: #ic0202_box; scale: 0 0 0"
+                    event-set__medal="_event: click; _target: #fridge-medal; visible: true">
+            <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+            <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0202_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <!-- hot water -->
+      <a-entity id="ic0203_pos" rotation="0 57 0">
+        <a-entity id="ic0203_box" mixin="icbox" class="card">
+          <a-entity id="ic0203_text" mixin="icboxtext" text="value:Hot water usage accounts for 15%\nof energy consumption in your home!\n\nReduce the amount of hot water\nyou use for cleaning dishes.;">
+          </a-entity>
+          <a-entity id="ic0203_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__hideme="_event: click; _target: #ic0203_box; scale: 0 0 0"
+                    event-set__wateroff="_event: click; _target: #sinkwaterstream; visible: false">
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0203_buttontext" mixin="infocardbuttontext"></a-entity>
+        </a-entity>
+      </a-entity>
+      
+    </a-entity>
+    <!-- chk02 end -->
+		
+    
+    
+		<!-- Bathroom checkpoint -->
+    <a-entity id="chk03pos" position="-3.46 0.05 -0.16" scale="1 1 1">
+      
+      <a-sphere id="chk03" class="clickable" position="0 1.2 0" checkpoint="offset: 0 0.4 0" mixin="checkpointsphere"
+                event-set__hidme="_event: click; _target: #chk03; scale: 0 0 0"
+                event-set__ip0301="_event: click; _target: #ip0301; scale: 1 1 1"
+                event-set__ip0302="_event: click; _target: #ip0302; scale: 1 1 1"
+                event-set__ip0303="_event: click; _target: #ip0303; scale: 1 1 1"
+                event-set__ip0304="_event: click; _target: #ip0304; scale: 1 1 1"
+                ></a-sphere>
+      <!-- a-circle id="chk03_shadow" position="0 -.02 0" radius="0.5" rotation="-90 180 0" material="color:#000000;opacity:0.2"></a-circle -->  
+  		<!-- a-cylinder id="chk03" class="clickable" checkpoint="offset: 0 1.6 0" radius="0.5" height="0.01"  color="#39BB82">   
+      </a-cylinder -->
+  
+      <!-- floor heating -->
+      <a-entity id="ic0301_pos" rotation="0 179 0">
+        <a-entity id="ic0301_box" mixin="icbox" class="card">
+          <a-entity id="ic0301_text" mixin="icboxtext" text="value:Warm your feet but don’t overheat!\n\nKeep your bathroom floor heating at a\nlower temperature when it’s not in use.;">
+          </a-entity>
+          <a-entity id="ic0301_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__hideme="_event: click; _target: #ic0301_box; scale: 0 0 0"
+                    event-set__floorheatertablet="_event: click; _target: #floorheatertablettext; text.value: 19 C">
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0301_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <!-- sauna -->
+      <a-entity id="ic0302_pos" rotation="0 230 0">
+        <a-entity id="ic0302_box" mixin="icbox" class="card">
+          <a-entity id="ic0302_text" mixin="icboxtext" text="value:Heating your sauna amounts to 5%\nof energy consumption in your home.\n\nTurn it off when it is not in use!;">
+          </a-entity>
+          <a-entity id="ic0302_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__close="_event: click; _target: #ic0302_box; scale: 0 0 0"
+                    event-set__lightsoff="_event: click; _target: #saunalight; position: 0 -20 0"
+                    >
+            <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0302_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <!-- shower -->
+      <a-entity id="ic0303_pos" rotation="0 200 0">
+        <a-entity id="ic0303_box" mixin="icbox" class="card">
+          <a-entity id="ic0303_text" mixin="icboxtext" text="value:Shorter showers, less carbon used!\n\nHeating your water uses 15% of energy\nconsumption in your home!;">
+          </a-entity>
+          <a-entity id="ic0303_button" class="clickable ic_button" mixin="infocardbutton"
+                event-set__close="_event: click; _target: #ic0303_box; scale: 0 0 0">
+            <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0303_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+      <!-- cold wash -->
+      <a-entity id="ic0304_pos" rotation="0 148 0">
+        <a-entity id="ic0304_box" mixin="icbox" class="card">
+          <a-entity id="ic0304_text" mixin="icboxtext" text="value:Wash your clothes in cold water, your\n clothes will last longer!\n\n90% of the energy used in a laundry\ncycle goes toward heating the water;">
+          </a-entity>
+          <a-entity id="ic0304_button" class="clickable ic_button" mixin="infocardbutton"
+                    event-set__close="_event: click; _target: #ic0304_box; scale: 0 0 0">
+                    <a-animation begin="mouseenter" attribute="material.color" from="#8cd755" to="#c6ff83" dur="100"></a-animation>
+                    <a-animation begin="mouseleave" attribute="material.color" from="#c6ff83" to="#8cd755" dur="100"></a-animation>
+          </a-entity>
+          <a-entity id="ic0304_buttontext" mixin="infocardbuttontext">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+    </a-entity>
+      
+	</a-entity>
+      
+  </a-entity>
+  
+  
+  
+  
+  
+<!-- THIS IS THE END OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE END OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE END OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE END OF THE EVERYTHING ELSE SECTION -->
+  
+  <!-- THIS IS THE END OF THE EVERYTHING ELSE SECTION -->
+        
+  
+  
+  
+  
+  
+    </a-scene>
+
+    
+<script>
+  var ic0201Button = document.getElementById('ic0201_button');
+  var dishdoor = document.getElementById('dishwasherdoor');
+  var moonstars01 = document.getElementById('moonstars01');
+      ic0201Button.addEventListener('click', function () {
+      dishdoor.emit('move');
+      });
+      ic0201Button.addEventListener('click', function () {
+      moonstars01.emit('move');
+      });
+</script>    
+
+    <script>
+      var ic0203Button = document.getElementById('ic0203_button');
+      var sinkwater = document.getElementById('sinkwaterlevel');
+      var moonstars01 = document.getElementById('moonstars01');
+          ic0203Button.addEventListener('click', function () {
+          sinkwater.emit('drainwater');
+          });
+    </script>
+    
+    
+    
+    <script>
+  var checkpoint1 = document.getElementById('chk01');
+  var checkpoint2 = document.getElementById('chk02');
+  var checkpoint3 = document.getElementById('chk03');
+  var everything = document.getElementById('everythingelse');
+      checkpoint1.addEventListener('click', function () {
+      everything.emit('everythingmove');
+      });
+      checkpoint2.addEventListener('click', function () {
+      everything.emit('everythingmove2');
+      });
+      checkpoint3.addEventListener('click', function () {
+      everything.emit('everythingmove3');
+      });
+</script>  
+    
+  </body>
+</html>
