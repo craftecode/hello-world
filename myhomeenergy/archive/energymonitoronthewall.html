@@ -1,0 +1,19 @@
+     <!-- ENERGY MONITOR ON THE WALL -->   
+        <a-entity id="wallmonitor" position="0.468 1.3 3.6" scale=".24 .24 .24">
+          <a-animation attribute="position" begin="move" from="0.468 1.3 3.6" to="-0.8 1.1 -4.5" easing="ease-in"></a-animation>
+          
+        <a-box position="0 0 0" scale="0.9 1.3 0.1" rotation="0 0 0" material="color:#FFFFFF;opacity:1;metalness: .5;">
+         <!-- screen --><a-box position="0 -.002 -0.2" scale=".95 .95 .65" rotation="0 0 0" material="color:#e5ddd7;opacity:1"></a-box>
+         <!-- bar bg --><a-box position="0 .36 -0.2" scale=".95 .24 .67" rotation="0 0 0" material="color:#5b534d;opacity:1"></a-box>
+         <!-- bar bg --><a-box position="0 0.36 -0.22" scale=".80 .1 .65" material="color:#e5ddd7;opacity:1"></a-box>
+		     <!-- barcon --><a-entity position="0 0.36 -0.24" scale=".80 .1 .65">
+							<a-box id="energybar_wall" position=".45 0 0" scale=".1 1 1" rotation="0 0 0" material="color:#FE7A16;opacity:1"></a-box>
+						</a-entity>
+        </a-box>
+        <!-- CIRCLES on the ENERGY MONITOR -->
+        <a-entity position="0 0 0" rotation="0 0 0">
+          <a-entity id="bigleft_wall" position="0.10 -0.05 -0.06" rotation="0 180 0" geometry="primitive: circle; radius: 0.2" material="color:#77d4e5"></a-entity>
+          <a-entity id="righttop_wall" position="-0.2 0.07 -0.06" rotation="0 180 0" geometry="primitive: circle; radius: 0.12" material="color:#8ae05d"></a-entity>
+          <a-entity id="rightbottom_wall" position="-0.2 -0.18 -0.06" rotation="0 180 0" geometry="primitive: circle; radius: 0.12" material="color:#60c89c"></a-entity>
+        </a-entity>  
+      </a-entity> 
