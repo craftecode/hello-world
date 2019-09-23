@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script><script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script><script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script><script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+<script src="https://supermedium.com/superframe/components/look-at/dist/aframe-look-at-component.min.js"></script>
+<script src="aframe-google-poly.min.js"></script>
+  
+  <title>my home energy</title>
+
+  </head> 
+  <body>
+   
+   
+    <a-scene renderer="antialias: true" google-poly="api_key: AIzaSyBLpfBJp33B0YeZXZYSBtKQYJv9_2u71U4">
+        
+    <a-assets>
+        <audio id="catmeow" src="https://cdn.glitch.com/5df8b17c-29de-42e9-af09-727620900369%2Fcat_meow_small.mp3?v=1567581069405" preload="auto"></audio>
+      </a-assets>     
+     
+      <a-entity id="cat"
+                obj-model="obj: url(https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fcat.obj);"
+                material="color:silver"
+                scale="1.3 1.3 1.3"
+                position="2.58032 0.90587 1.77382"
+                rotation="0 55 0"
+                sound="src: #catmeow; on: click"
+                class="clickable"
+                event-set__showspeechbubble="_event: click; _target: #speechbubble; visible: true"
+                ></a-entity>
+      
+            <a-entity id="clothesdryer" 
+                google-poly="src: bTbe1CRWC1T" 
+                position="0.50466 0.044 3.58844" 
+                rotation="0 0 0" 
+                scale="0.01 0.01 0.01"></a-entity>
+      
+      
+      
+      <a-entity id="heater"
+                obj-model="obj: url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fheater.obj);"
+                material="color:silver"
+                scale="1 1 1"
+                position="4.909 0.089 3.927"
+                rotation="0 0 0"
+                ></a-entity>      
+      
+      <a-entity id="tv"
+                gltf-model="url(https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Ftv_by_google.glb)"
+                scale="3.5 3.5 3.5"
+                position="3.14294 0 7.51706" 
+                rotation="-90.00021045914971 180 0"></a-entity>
+      
+      <a-entity id="earth"
+                gltf-model="url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fearth_jarlanperez.glb)"
+                scale="2 2 2" 
+                position="0.56857 1.5 5.88106" 
+                rotation="0 75.79257601329068 0"></a-entity>
+            
+      <a-entity id="man_by_alexsaffysafayan" 
+                google-poly="src: bnWcNaWgPGb" 
+                position="2.58032 0.90587 1.77382" 
+                rotation="0 -20 0" 
+                scale="0.7 0.7 0.7"
+                visible="true"></a-entity>  
+      
+      <a-entity id="kitchen"
+                gltf-model="url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fkitchen.glb)"
+                scale="1 1 1"
+                position="4 0 0"
+                rotation="0 0 0"></a-entity>
+      
+      
+      
+     
+      <a-entity id="speechbubble" position="1.92113 1.5 1.50073" rotation="0 15 0" visible="false">
+        <a-entity id="speechbubblebackground"
+                  geometry="primitive:cylinder; radius: 0.35; height: 0.01; segmentsHeight: 1; segmentsRadial: 30"
+                  material="color:white"
+                  rotation="-90 0 0"
+                  scale="1.4 1 1" ></a-entity>
+        <a-entity id="speechbubbletext"
+                  position="0 0 0"
+                  rotation="0 0 0"           
+                  text="value: Meow! The best thing I can do to save energy is...;
+                        align: center;
+                        zOffset:0.01;
+                        baseline:center;
+                        wrapCount:31;
+                        color:black;"></a-entity>
+      </a-entity>
+     
+     
+      <!-- Each of the walls, the ceiling and the floor are made from a box shape
+            'id' sets the name
+            'position' sets the x y z coordinates
+            'rotation' sets the number of degrees the object is rotated on the x y and z axes 
+            'geometry' -->
+     
+      
+      <a-box id="floor"
+             material="color:whitesmoke"
+             position="2.56459 0 3.8933" 
+             width="5.3" 
+             height="0.1" 
+             depth="8" 
+             ></a-box>
+
+      <a-box id="ceiling"
+             material="color:whitesmoke"
+             position="2.60941 2.5 3.89619"
+             width="5.1"
+             height="0.1"
+             depth="8"
+             event-set__hide="_event: mouseenter; visible: false"
+             event-set__show="_event: mouseleave; visible: true"
+             class="clickable"
+             ></a-box> 
+      
+      <a-box id="wall_north"
+             material="color:green"
+             position="2.57887 1.25 0.06107"
+             width="5.1"
+             height="2.5"
+             depth="0.1"
+             ></a-box>
+
+      <a-box id="wall_south"
+             material="color:whitesmoke"
+             position="2.57211 1.25 7.80987"
+             width="5.1"
+             height="2.5"
+             depth="0.1"
+             ></a-box>
+
+      <a-box id="wall_west"
+             material="color:red"
+             position="0.06379 1.25 3.93879"
+             width="0.1"
+             height="2.5"
+             depth="7.8"
+             ></a-box>
+     
+      
+      <!-- The East wall is made of four boxes stacked together -->
+      <a-box id="wall_eastbottom"
+             position="5.13896 0.402 3.86018"
+             rotation="0 0 0"
+             width="0.1"
+             height="0.75"
+             depth="7.7"
+             material="color:yellow"></a-box>
+      
+      <a-box id="wall_easttop"
+             position="5.10005 2.35 3.74774"
+             rotation="0 0 0"
+             width="0.1"
+             height="0.2"
+             depth="7.7"
+             material="color:yellow"></a-box>
+      
+      <a-box id="wall_eastleft"
+             position="5.14858 1.65 0.99758"
+             rotation="0 0 0"
+             width="0.1"
+             height="1.2"
+             depth="1.8"
+             material="color:yellow"></a-box>
+      
+      <a-box id="wall_eastright"
+             position="5.13046 1.65 7.21665"
+             rotation="0 0 0"
+             width="0.1"
+             height="1.2"
+             depth="0.1"
+             material="color:yellow"></a-box>
+     
+     
+     <!-- The kitchen is all one object -->
+      <a-entity id="kitchen_from_google"
+                gltf-model="url(https://cdn.glitch.com/5c064e2a-b2d9-48e6-bc9c-5bbf771e005a%2Fkitchen_by_google_white.glb)"
+                scale="8 8 8"
+                position="1.674 1.222 0.1936"
+                rotation="0 210 0"></a-entity>
+     
+      <!-- The grass and tress outside are all one object -->
+      <a-entity id="outside_trees_grass" 
+                position="0 -0.1 0" 
+                environment="preset: forest;lighting: none;"></a-entity>
+      
+      <!-- The bicycle is all one object, all the colors are defined in the model file -->
+      <a-entity id="bicycle"
+                gltf-model="url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fbicycle.glb)"
+                scale="2 2 2" 
+                position="4.72733 0.557 6.50415" 
+                rotation="0 180 0"></a-entity>
+      
+      <!-- The butterfly has an animation instructions included in the model file that is told to play by the animation mixer component -->
+      <a-entity id="butterfly"
+                gltf-model="url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fbutterfly_by_google_animated.glb)"
+                scale="1 1 1" 
+                position="5.78608 1.6 4.40913" 
+                rotation="-18 -53 -152"
+                animation-mixer="clip: *Fly; duration: 0.3"></a-entity>    
+      
+      <!-- The solar panel is made of two boxes arranged together -->
+      <a-box id="solarpanel" 
+             position="15.83881 1.19482 6.01699" 
+             rotation="-30.0000701530499 -34.11849078445026 0" 
+             width="3" 
+             height="2" 
+             depth="0.1" 
+             material="">
+        <a-box id="solarpanelblack" 
+               position="0 0 0.05" 
+               material="color: #000000" 
+               depth="0.1"
+               height="1.8"
+               width="2.7"
+               ></a-box>
+      </a-box>
+      
+      <a-entity id="tree_tall"
+                obj-model="obj: url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Ftree_tall2_feiss.obj);"
+                material="color: #a1a335"
+                scale="1 1 1"
+                position="14 0 2.71363"
+                rotation="0 0 0"
+                class="clickable"
+                animation__fall="from:  0 0 0;  loop:  1;  property:  rotation;  startEvents:  click;  to:  -70 0 0"
+                ></a-entity>
+      
+      
+      <!-- The windmill is made of one object for the stem and one for the set of blades -->     
+      <a-entity id="windmill01stem"
+                obj-model="obj: url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fturbine_by_google_base.obj);"
+                scale="0.17 0.17 0.17"
+                position="20 0 7"
+                rotation="0 280 0"
+                ></a-entity>
+      <a-entity id="windmill01blades"
+                obj-model="obj: url(https://cdn.glitch.com/4b62e6e7-209b-4081-aaa6-7d939a47557e%2Fturbine_by_google_blades.obj);"
+                scale="0.17 0.17 0.17"
+                position="19.579 4 7"
+                rotation="0 280 0"
+                animation="property:rotation; from: 0 280 0; to:0 280 359; loop:true; easing:linear; startEvents:click; dur:1000"
+                class="clickable"
+                ></a-entity>
+      
+      
+      
+      <a-entity id="door01_parent" position="0.105 1 2" rotation="0 90 0">
+        <a-box id="door01" position="0 0 0" rotation="0 0 0" width="1" height="2" depth="0.05" material="color:tan"></a-box>
+        <a-box id="door01_handle1" position="-0.27629 -0.1467 0.05404" rotation="0 0 0" width="0.22" height="0.04" depth="0.02" material="color:silver"></a-box>
+        <a-box id="door01_handle2" position="-0.27629 -0.1467 -0.05404" rotation="0 0 0" width="0.22" height="0.04" depth="0.02" material="color:silver"></a-box>
+        <a-box id="doorway01_top" position="0 0.95 0" rotation="0 0 0" width="1" height="0.1" depth="0.1" material="color:silver"></a-box>
+        <a-box id="doorway01_left" position="-0.5 0 0" rotation="0 0 0" width="0.1" height="2" depth="0.1" material="color:silver"></a-box>
+        <a-box id="doorway01_right" position="0.5 0 0" rotation="0 0 0" width="0.1" height="2" depth="0.1" material="color:silver"></a-box>
+      </a-entity>
+      
+      <a-entity id="door02_parent" position="0.736 1 7.751" rotation="0 180 0">
+        <a-box id="door02" position="0 0 0" rotation="0 0 0" width="1" height="2" depth="0.05" material="color:tan"></a-box>
+        <a-box id="door02_handle1" position="-0.27629 -0.1467 0.05404" rotation="0 0 0" width="0.22" height="0.04" depth="0.02" material="color:silver"></a-box>
+        <a-box id="door02_handle2" position="-0.27629 -0.1467 -0.05404" rotation="0 0 0" width="0.22" height="0.04" depth="0.02" material="color:silver"></a-box>
+        <a-box id="doorway02_top" position="0 0.95 0" rotation="0 0 0" width="1" height="0.1" depth="0.1" material="color:silver"></a-box>
+        <a-box id="doorway02_left" position="-0.5 0 0" rotation="0 0 0" width="0.1" height="2" depth="0.1" material="color:silver"></a-box>
+        <a-box id="doorway02_right" position="0.5 0 0" rotation="0 0 0" width="0.1" height="2" depth="0.1" material="color:silver"></a-box>
+      </a-entity>
+      
+      
+      <a-entity id="rig" position="3 0 4"><a-entity id="camera" camera wasd-controls look-controls position="0 1.6 0"><a-entity id="cursor" raycaster="objects: .clickable" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #FFF; shader: flat;" animation="property:scale; from: 0.2 0.2 0.2; to: 1 1 1; dur: 150; startEvents: click;" animation__2="startEvents: fusing;property: scale;from: 1 1 1;to: 0.2 0.2 0.2;dur: 1000"></a-entity></a-entity></a-entity>
+      
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+    </a-scene>
+    
+    
+          <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>
